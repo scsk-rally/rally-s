@@ -5,9 +5,9 @@ SCSK株式会社の会社管理環境へ移行するためのソースです。
 
 ## 状態
 
-移行準備中。GitHubの非公開リポジトリ https://github.com/scsk-rally/rally-s を作成済み。新Vercelは未接続です。
-希望リポジトリ名・Vercelプロジェクト名：rally-s。
-希望URL：rally-s.vercel.app（未取得）。
+GitHubリポジトリ https://github.com/scsk-rally/rally-s とVercelプロジェクト `rally-s` を接続済みです。
+公開URL：https://rally-s.vercel.app。
+カード登録を後日にするためHobbyで運用中であり、Git連携のためリポジトリは一時的にpublicです。Proへ移行した時点でprivateへ戻します。
 旧本番は別環境として維持します。
 
 ## ローカル開発

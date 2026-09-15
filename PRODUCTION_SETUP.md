@@ -3,10 +3,10 @@
 ## 接続状態
 
 - GitHub Organization：scsk-rally（会社名SCSK株式会社で作成済み）。管理ユーザー：scsk-rallys。
-- 非公開リポジトリ：https://github.com/scsk-rally/rally-s（作成済み、privateを設定画面で確認）。
-- 新Vercelチーム：作成済みのVercel Hobbyチーム（表示名 K）。
-- 新Vercelプロジェクト：rally-s（未作成）。
-- 本番URL：rally-s.vercel.app（希望・未取得）。
+- リポジトリ：https://github.com/scsk-rally/rally-s（2026-09-15に一時的にpublicへ変更）。
+- 新Vercelチーム：K（Hobby）。
+- 新Vercelプロジェクト：rally-s（作成済み、GitHub連携済み）。
+- 本番URL：https://rally-s.vercel.app（初回デプロイ成功）。
 - Production branch：main（接続時に設定）。
 - 旧本番：efukuri-member-platform.vercel.app。並行稼働として保持。
 
@@ -51,6 +51,17 @@ GitHub Freeの非公開リポジトリでは必須レビュー・保護ブラン
 GitHub OrganizationはFreeで開始。Vercelのプロジェクト作成画面でProの14日間無料トライアルを選んだところ、カード情報と請求先住所の入力が必須と表示された（2026-09-15）。カード未登録の方針に従い、入力もトライアル開始も行わず取消済み。
 カード登録、有料契約、本人認証、パスワード設定、規約同意は本人が操作する。
 無料期間終了後の会社運用にHobbyを使えるとは扱わない。現時点で非公開OrganizationリポジトリをVercelでデプロイするには、カード登録を伴うProへの移行が必要。
+
+HobbyでGit連携を継続するため、`rally-s` は現在publicである。Proへ移行してからprivateへ戻す。Hobbyのままprivateへ戻すと、会社OrganizationのGit連携による以後のデプロイを継続できない。
+
+## 初回デプロイの記録
+
+- 実行日：2026-09-15
+- Git commit：`f0523d4`
+- デプロイ結果：READY
+- 公開ページ：`https://rally-s.vercel.app/login.html` を確認
+- 環境変数：未設定。空欄の6キーは登録せず除外。
+- この状態ではログイン画面など静的公開部分は確認できる。新しいDB、AUTH_SECRET、管理者初期情報、Blobを独立して設定するまで、管理・会員APIを本番利用しない。
 
 確認元（2026-09-15）：
 - https://vercel.com/docs/git
