@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="トップページに表示する3つの相談サービスを管理します。">
+<title>相談サービス | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body" data-content-type="consultation">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-title">
+      <div><span>CONSULTATION SERVICES</span><h1>相談サービス</h1><p>トップページの「モヤモヤは、話すと少し軽くなる」に表示する3項目を編集します。</p></div>
+      <div class="admin-title__note"><span><strong>3項目固定</strong>表示順1が左、2が中央、3が右に配置されます。</span></div>
+    </div>
+    <section class="admin-panel admin-section-settings">
+      <div class="admin-panel__head"><span class="admin-panel__icon">Aa</span><div><small>SECTION HEADING</small><h2>トップページの見出し設定</h2></div></div>
+      <form id="sectionSettingsForm" data-section-id="consultations" novalidate>
+        <div class="admin-section-settings__grid">
+          <label class="admin-field admin-field--wide" for="sectionTitle"><span>見出しタイトル</span><input id="sectionTitle" name="title" type="text" required></label>
+          <label class="admin-field admin-field--wide" for="sectionLead"><span>見出し下の補足文</span><textarea id="sectionLead" name="lead" placeholder="見出しの下に表示する案内文"></textarea></label>
+          <label class="admin-field admin-field--wide" for="sectionNote"><span>カード下の注記</span><input id="sectionNote" name="note" type="text" placeholder="外部サイトへのリンクについての注記"></label>
+        </div>
+        <div class="admin-section-settings__actions"><button class="admin-submit" type="submit">見出し設定を保存 →</button><p class="admin-section-settings__status" id="sectionSettingsStatus" role="status" hidden></p></div>
+      </form>
+    </section>
+    <div class="admin-layout admin-layout--consultation">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">✎</span><div><small>EDIT ONLY</small><h2>選択した項目を編集</h2></div></div>
+        <form id="contentForm" novalidate>
+          <label class="admin-field" for="consultationTitle"><span>サービス名</span><input id="consultationTitle" name="title" type="text" required></label>
+          <label class="admin-field" for="consultationTag"><span>カテゴリ表示</span><input id="consultationTag" name="tag" type="text" placeholder="例）暮らしのお金"></label>
+          <label class="admin-field" for="consultationDescription"><span>説明文</span><textarea id="consultationDescription" name="description" placeholder="カード内に表示する説明文"></textarea></label>
+          <label class="admin-field" for="consultationButtonLabel"><span>リンクボタン名</span><input id="consultationButtonLabel" name="buttonLabel" type="text" placeholder="例）無料で予約する"></label>
+          <label class="admin-field" for="consultationTargetUrl"><span>リンクURL <small>外部URL／内部HTML</small></span><input id="consultationTargetUrl" name="targetUrl" type="text" required placeholder="https://example.com/ または page.html"></label>
+          <label class="admin-field" for="contentImage"><span>カード画像 <small>PCから選択・1.5MB以下</small></span><input id="contentImage" name="imageFile" type="file" accept="image/*"></label>
+          <div class="admin-image-preview"><img id="contentImagePreview" alt="選択した画像のプレビュー" hidden><button id="contentImageRemove" type="button" hidden>画像を外す</button></div>
+          <label class="admin-field" for="consultationOrder"><span>表示順 <small>1＝左、2＝中央、3＝右</small></span><input id="consultationOrder" name="order" type="number" min="1" max="3" value="1" required></label>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit" disabled><span id="contentSubmitLabel">変更する項目を選択</span> →</button>
+            <button class="admin-cancel" id="contentCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head"><div><small>SAME ORDER AS TOP PAGE</small><h2>トップページの表示順 <span id="contentCount">3 / 3件</span></h2></div></div>
+        <div class="admin-company-list admin-consultation-admin-list" id="contentList" aria-live="polite"></div>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/content-store.js"></script>
+<script src="js/admin-section-settings.js"></script>
+<script src="js/admin-content.js"></script>
+</body>
+</html>

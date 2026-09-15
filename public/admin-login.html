@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rally 資産形成企業コード管理画面の管理者ログインです。">
+<title>管理者ログイン | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-login-body">
+
+  <main class="admin-login-shell">
+    <section class="admin-login-brand">
+      <a class="admin-login-brand__logo" href="login.html">
+        <img src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+      </a>
+      <div class="admin-login-brand__copy">
+        <span>RALLY ADMIN PORTAL</span>
+          <h1><span>会員サイトの体験を、</span><span>ここから整える。</span></h1>
+          <p><span>企業情報と掲載コンテンツを、安全に</span><span>わかりやすく管理するための専用スペースです。</span></p>
+      </div>
+      <div class="admin-login-brand__visual" aria-hidden="true">
+        <div class="admin-login-orbit admin-login-orbit--one"></div>
+        <div class="admin-login-orbit admin-login-orbit--two"></div>
+        <div class="admin-login-shield">
+          <svg viewBox="0 0 64 72" fill="none"><path d="M32 3 59 13v18c0 18-10.8 31.7-27 38C15.8 62.7 5 49 5 31V13L32 3Z" fill="rgba(242,212,154,.18)" stroke="#F2D49A" stroke-width="2"/><path d="M22 36l7 7 14-18" stroke="#F2D49A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="admin-login-brand__foot"><i></i> AUTHORIZED ACCESS ONLY</div>
+    </section>
+
+    <section class="admin-login-form">
+      <a class="admin-login-form__back" href="login.html"><span aria-hidden="true">←</span> 会員ログインへ戻る</a>
+
+      <div class="admin-login-form__inner">
+        <div class="admin-login-form__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1"/></svg>
+        </div>
+        <span class="admin-login-form__label">ADMINISTRATOR</span>
+        <h2>管理者ログイン</h2>
+          <p>サイト管理を行うには、管理者IDとパスワードを入力してください。</p>
+
+        <div class="admin-login-error" id="adminLoginError" role="alert" hidden>
+          <span>!</span><b id="adminLoginErrorText">IDまたはパスワードが正しくありません。</b>
+        </div>
+
+        <form id="adminLoginForm" novalidate>
+          <label class="admin-login-field" for="adminLoginId">
+            <span>ログインID</span>
+            <input id="adminLoginId" name="loginId" type="text" autocomplete="username" required>
+          </label>
+          <label class="admin-login-field" for="adminLoginPassword">
+            <span>パスワード</span>
+            <span class="admin-login-password">
+              <input id="adminLoginPassword" name="password" type="password" autocomplete="current-password" required>
+              <button id="adminPasswordToggle" type="button" aria-label="パスワードを表示" aria-pressed="false">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+              </button>
+            </span>
+          </label>
+          <button class="admin-login-submit" type="submit">
+            <span>管理画面へ進む</span><b aria-hidden="true">→</b>
+          </button>
+        </form>
+
+        <div class="admin-login-form__security">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/></svg>
+          認証状態は4時間後に自動で解除されます
+        </div>
+      </div>
+    </section>
+  </main>
+
+<script src="js/admin-auth.js"></script>
+<script src="js/admin-login.js"></script>
+</body>
+</html>

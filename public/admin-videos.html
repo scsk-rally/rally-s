@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="会員サイトのYouTube動画投稿を管理します。">
+<title>動画投稿 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body" data-content-type="video">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+  <main class="admin-main">
+    <div class="admin-title">
+      <div><span>VIDEO MANAGEMENT</span><h1>動画投稿</h1><p>YouTube動画と任意の画像サムネイルを、最大5件まで管理します。</p></div>
+      <div class="admin-title__note"><span><strong>最大5件</strong>表示切替と公開開始・終了日時を設定できます。</span></div>
+    </div>
+    <section class="admin-panel admin-section-settings">
+      <div class="admin-panel__head"><span class="admin-panel__icon">Aa</span><div><small>SECTION HEADING</small><h2>トップページの見出し設定</h2></div></div>
+      <form id="sectionSettingsForm" data-section-id="videos" novalidate>
+        <div class="admin-section-settings__grid">
+          <label class="admin-field" for="sectionTitle"><span>見出しタイトル</span><input id="sectionTitle" name="title" type="text" required></label>
+          <label class="admin-field" for="sectionBadgeText"><span>タイトル横のバッジ <small>例）NEW</small></span><input id="sectionBadgeText" name="badgeText" type="text" maxlength="24"></label>
+          <label class="admin-visibility"><input name="badgeVisible" type="checkbox" checked><span><b>バッジを表示する</b><small>オフにするとタイトル横のバッジを隠します</small></span></label>
+          <span></span>
+          <label class="admin-field" for="sectionLinkLabel"><span>右側リンクの文言</span><input id="sectionLinkLabel" name="linkLabel" type="text" placeholder="例）セミナー情報を見る"></label>
+          <label class="admin-field" for="sectionLinkUrl"><span>右側リンクのURL</span><input id="sectionLinkUrl" name="linkUrl" type="text" placeholder="例）seminar.html"></label>
+        </div>
+        <div class="admin-section-settings__actions"><button class="admin-submit" type="submit">見出し設定を保存 →</button><p class="admin-section-settings__status" id="sectionSettingsStatus" role="status" hidden></p></div>
+      </form>
+    </section>
+    <div class="admin-layout">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">＋</span><div><small>ADD / EDIT</small><h2>動画を登録</h2></div></div>
+        <form id="contentForm" novalidate>
+          <label class="admin-field" for="contentTitle"><span>動画タイトル</span><input id="contentTitle" name="title" type="text" required></label>
+          <label class="admin-field" for="contentCategory"><span>カテゴリ</span><input id="contentCategory" name="category" type="text" placeholder="例）資産形成"></label>
+          <label class="admin-field" for="contentYoutubeUrl"><span>YouTube URL</span><input id="contentYoutubeUrl" name="youtubeUrl" type="url" required placeholder="https://youtu.be/..."></label>
+          <label class="admin-field" for="contentDuration"><span>再生時間 <small>任意</small></span><input id="contentDuration" name="duration" type="text" inputmode="numeric" placeholder="例）3:21 または 1:02:30"></label>
+          <p class="admin-field__hint">入力した再生時間を動画カードに表示します。空欄の場合は再生時間を表示しません。</p>
+          <label class="admin-field" for="videoOrder"><span>表示順 <small>1〜5・番号が小さい順</small></span><input id="videoOrder" name="order" type="number" min="1" max="5" value="1" required></label>
+          <label class="admin-field" for="contentImage"><span>画像サムネイル <small>PCから選択・1.5MB以下</small></span><input id="contentImage" name="imageFile" type="file" accept="image/*"></label>
+          <div class="admin-image-preview"><img id="contentImagePreview" alt="選択した画像のプレビュー" hidden><button id="contentImageRemove" type="button" hidden>画像を外す</button></div>
+          <div class="admin-schedule-fields">
+            <label class="admin-field" for="contentStartAt"><span>公開開始日時 <small>任意</small></span><input id="contentStartAt" name="startAt" type="datetime-local"></label>
+            <label class="admin-field" for="contentEndAt"><span>公開終了日時 <small>任意・空欄は無期限</small></span><input id="contentEndAt" name="endAt" type="datetime-local"></label>
+          </div>
+          <label class="admin-visibility"><input name="visible" type="checkbox" checked><span><b>サイトに表示する</b><small>オフにすると公開期間内でも非表示になります</small></span></label>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit"><span id="contentSubmitLabel">投稿を追加</span> →</button>
+            <button class="admin-cancel" id="contentCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head"><div><small>REGISTERED CONTENT</small><h2>登録済み動画 <span id="contentCount">0 / 5件</span></h2></div></div>
+        <div class="admin-company-list" id="contentList" aria-live="polite"></div>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+<script src="js/content-store.js"></script>
+<script src="js/admin-section-settings.js"></script>
+<script src="js/admin-content.js"></script>
+</body>
+</html>

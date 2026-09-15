@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="トップページの「どこから始める？」に表示する4つのトピックを管理します。">
+<title>トピック | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body" data-content-type="topic">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-title">
+      <div><span>TOPICS</span><h1>トピック</h1><p>トップページの「どこから始める？」に表示する4項目を編集します。</p></div>
+      <div class="admin-title__note"><span><strong>4項目固定</strong>表示順1が左端、4が右端に配置されます。</span></div>
+    </div>
+    <section class="admin-panel admin-section-settings">
+      <div class="admin-panel__head"><span class="admin-panel__icon">Aa</span><div><small>SECTION HEADING</small><h2>トップページの見出し設定</h2></div></div>
+      <form id="sectionSettingsForm" data-section-id="topics" novalidate>
+        <div class="admin-section-settings__grid">
+          <label class="admin-field" for="sectionEyebrow"><span>小見出し</span><input id="sectionEyebrow" name="eyebrow" type="text" placeholder="例）さて、今日は"></label>
+          <label class="admin-field" for="sectionTitle"><span>見出しタイトル</span><input id="sectionTitle" name="title" type="text" required></label>
+          <label class="admin-field admin-field--wide" for="sectionLead"><span>右側の補足文 <small>改行可能</small></span><textarea id="sectionLead" name="lead" placeholder="トップページに表示する案内文"></textarea></label>
+        </div>
+        <div class="admin-section-settings__actions"><button class="admin-submit" type="submit">見出し設定を保存 →</button><p class="admin-section-settings__status" id="sectionSettingsStatus" role="status" hidden></p></div>
+      </form>
+    </section>
+    <div class="admin-layout admin-layout--topic">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">✎</span><div><small>EDIT ONLY</small><h2>選択した項目を編集</h2></div></div>
+        <form id="contentForm" novalidate>
+          <label class="admin-field" for="topicBadge"><span>時間・案内ラベル</span><input id="topicBadge" name="badge" type="text" placeholder="例）おすすめ・約5分"></label>
+          <label class="admin-field" for="topicIcon"><span>アイコン <small>絵文字・記号</small></span><input id="topicIcon" name="icon" type="text" maxlength="8" placeholder="例）🌱"></label>
+          <label class="admin-field" for="topicTitle"><span>タイトル <small>改行可能</small></span><textarea id="topicTitle" name="title" required placeholder="例）未来をちょっと&#10;のぞいてみる"></textarea></label>
+          <label class="admin-field" for="topicSubtitle"><span>補足文</span><input id="topicSubtitle" name="subtitle" type="text" placeholder="例）かんたんシミュレーション"></label>
+          <label class="admin-field" for="topicButtonLabel"><span>リンクボタン名</span><input id="topicButtonLabel" name="buttonLabel" type="text" placeholder="例）やってみる"></label>
+          <label class="admin-field" for="topicTargetUrl"><span>リンクURL <small>外部URL／内部HTML／ページ内リンク</small></span><input id="topicTargetUrl" name="targetUrl" type="text" required placeholder="https://example.com/、page.html または #video-section"></label>
+          <label class="admin-field" for="topicOrder"><span>表示順 <small>1＝左端、4＝右端</small></span><input id="topicOrder" name="order" type="number" min="1" max="4" value="1" required></label>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit" disabled><span id="contentSubmitLabel">変更する項目を選択</span> →</button>
+            <button class="admin-cancel" id="contentCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head"><div><small>SAME ORDER AS TOP PAGE</small><h2>トップページの表示順 <span id="contentCount">4 / 4件</span></h2></div></div>
+        <div class="admin-company-list admin-topic-admin-list" id="contentList" aria-live="polite"></div>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/content-store.js"></script>
+<script src="js/admin-section-settings.js"></script>
+<script src="js/admin-content.js"></script>
+</body>
+</html>

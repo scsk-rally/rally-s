@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rally 資産形成会員サイトの管理メニューです。">
+<title>管理トップ | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a href="login.html" class="admin-header__logo" aria-label="ログイン画面へ">
+      <img src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+    </a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="dashboard.html" target="_blank" rel="noopener"><span aria-hidden="true">←</span> 会員サイトを確認</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+  <main class="admin-main admin-hub">
+    <div class="admin-title">
+      <div>
+        <span>CONTENT MANAGEMENT</span>
+        <h1>管理メニュー</h1>
+        <p>企業情報と、会員サイトに掲載するコンテンツを管理します。</p>
+      </div>
+      <div class="admin-top-shortcuts">
+        <a class="admin-mainvisual-shortcut admin-mainvisual-shortcut--analytics" href="admin-analytics.html" data-admin-permission="analytics">
+          <span>ANALYTICS</span><strong>アクセス分析</strong><small>企業別の利用状況を確認</small><b aria-hidden="true">→</b>
+        </a>
+        <a class="admin-mainvisual-shortcut" href="admin-mainvisual.html" data-admin-permission="mainvisual">
+          <span>MAIN VISUAL</span><strong>メインビジュアル管理</strong><small>トップ上部を編集</small><b aria-hidden="true">→</b>
+        </a>
+        <a class="admin-mainvisual-shortcut admin-mainvisual-shortcut--menu" href="admin-menu.html" data-admin-permission="menu">
+          <span>SIDE MENU</span><strong>メニュー管理</strong><small>左メニューを編集</small><b aria-hidden="true">→</b>
+        </a>
+      </div>
+    </div>
+    <nav class="admin-hub__grid" aria-label="管理メニュー">
+      <a class="admin-hub-card admin-hub-card--company" href="admin-companies.html" data-admin-permission="companies">
+        <span class="admin-hub-card__number">01</span><small>COMPANIES</small>
+        <h2>企業コード管理</h2><p>企業コードと企業別リンクを追加・修正・削除します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--notice" href="admin-notices.html" data-admin-permission="notice">
+        <span class="admin-hub-card__number">02</span><small>NEWS</small>
+        <h2>お知らせ投稿</h2><p>最大3件のお知らせと公開期間を管理します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--seminar" href="admin-seminars.html" data-admin-permission="seminar">
+        <span class="admin-hub-card__number">03</span><small>SEMINARS</small>
+        <h2>セミナー投稿</h2><p>最大5件のセミナー情報と画像を管理します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--topic" href="admin-topics.html" data-admin-permission="topic">
+        <span class="admin-hub-card__number">04</span><small>TOPICS</small>
+        <h2>トピック</h2><p>会員トップのトピック4項目、表示順、セクション見出しを編集します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--consultation" href="admin-consultations.html" data-admin-permission="consultation">
+        <span class="admin-hub-card__number">05</span><small>CONSULTATION</small>
+        <h2>相談サービス</h2><p>会員トップの相談サービス3項目と、セクション見出しを編集します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--expert" href="admin-experts.html" data-admin-permission="expert">
+        <span class="admin-hub-card__number">06</span><small>EXPERTS</small>
+        <h2>専門家管理</h2><p>最大6件の専門家相談カードと、申し込み先を管理します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--video" href="admin-videos.html" data-admin-permission="video">
+        <span class="admin-hub-card__number">07</span><small>VIDEOS</small>
+        <h2>動画投稿</h2><p>会員トップの動画、表示順、セクション見出しを管理します。</p><b>管理画面を開く →</b>
+      </a>
+      <a class="admin-hub-card admin-hub-card--service" href="admin-services.html" data-admin-permission="service">
+        <span class="admin-hub-card__number">08</span><small>SERVICES</small>
+        <h2>サービス管理</h2><p>会員トップのサービス、表示順、セクション見出しを管理します。</p><b>管理画面を開く →</b>
+      </a>
+    </nav>
+  </main>
+<script>
+(function () {
+  var button = document.getElementById('adminLogout');
+  if (!button) return;
+  button.addEventListener('click', function () {
+    window.EfukuriAdminLogout();
+  });
+}());
+</script>
+</body>
+</html>

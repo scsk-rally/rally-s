@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="企業別のログイン数、ページ閲覧数、リンククリック数を確認します。">
+<title>アクセス分析 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理メニューへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理メニューへ</a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+  <main class="admin-main analytics-admin">
+    <div class="admin-title">
+      <div><span>ACCESS ANALYTICS</span><h1>アクセス分析</h1><p>企業ごとのログイン、会員ページ閲覧、企業専用リンクの利用状況を確認します。</p></div>
+    </div>
+
+    <section class="analytics-filter" aria-label="集計条件">
+      <label>企業<select id="analyticsCompany"><option value="">全企業</option></select></label>
+      <label>開始日<input id="analyticsFrom" type="date" required></label>
+      <label>終了日<input id="analyticsTo" type="date" required></label>
+      <button class="analytics-button" id="analyticsRefresh" type="button">表示更新</button>
+      <button class="analytics-button analytics-button--pdf" id="analyticsPdf" type="button">PDFダウンロード</button>
+    </section>
+    <p class="analytics-status" id="analyticsStatus" role="status">読み込み中です…</p>
+
+    <section class="analytics-kpis" aria-label="主要指標">
+      <article><small>LOGIN</small><strong id="kpiLogins">—</strong><span>ログイン数</span></article>
+      <article><small>ACCESS</small><strong id="kpiPageViews">—</strong><span>アクセス数</span></article>
+      <article><small>UNIQUE</small><strong id="kpiSessions">—</strong><span>ユニーク数（概算）</span></article>
+      <article><small>LOGIN TYPE</small><strong id="kpiLoginType">—</strong><span>企業コード / 固定リンク</span></article>
+    </section>
+
+    <div class="analytics-grid">
+      <section class="analytics-panel analytics-panel--wide">
+        <div class="analytics-panel__head"><div><small>DAILY TREND</small><h2>日別推移</h2></div><p><span class="analytics-legend__line" aria-hidden="true"></span>アクセス数（左目盛り）　<span class="analytics-legend__bar" aria-hidden="true"></span>ログイン数（右目盛り）</p></div>
+        <div class="analytics-chart" id="analyticsChart" aria-label="日別アクセス推移"></div>
+      </section>
+      <section class="analytics-panel">
+        <div class="analytics-panel__head"><div><small>POPULAR CONTENT</small><h2>よく見られたページ・リンク</h2></div><p>集計期間内の上位10件</p></div>
+        <ol class="analytics-ranking" id="analyticsPages"></ol>
+      </section>
+      <section class="analytics-panel" id="companyComparisonPanel">
+        <div class="analytics-panel__head"><div><small>COMPANIES</small><h2>企業別比較</h2></div></div>
+        <div class="analytics-table-wrap"><table class="analytics-table"><thead><tr><th>企業</th><th>ログイン</th><th>アクセス</th><th>ユニーク数（概算）</th></tr></thead><tbody id="analyticsCompanies"></tbody></table></div>
+      </section>
+    </div>
+    <p class="analytics-note">アクセス数は、会員ページを表示した回数と、動画・AIロボアドバイザー・企業専用リンク・外部申込など内容利用を目的としたクリックの合計です。サービス詳細ページと「ホームに戻る」など画面移動だけのリンクは含みません。動画は初期登録・追加登録にかかわらず全件を記録し、一覧には集計期間内の上位10件を表示します。会員トップの表示回数は、再読み込み・他ページから戻った場合・認証継続中の再訪も加算されるため、ログイン数とは一致しません。ユニーク数（概算）は、同じ端末・ブラウザからの利用を1日1回として数えます。</p>
+  </main>
+<script src="js/admin-analytics.js"></script>
+</body>
+</html>

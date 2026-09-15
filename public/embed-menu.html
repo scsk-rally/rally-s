@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="会員メニューのコンテンツを表示します。">
+<title>会員メニュー | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lg-body--embed">
+<div class="lg-shell">
+  <aside class="lg-side" id="sideNav">
+    <div class="lg-side__logo"><img class="is-company-logo" src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></div>
+    <nav class="lg-nav" aria-label="会員メニュー">
+      <div class="lg-nav__group-label">ホーム</div>
+      <a class="lg-nav__link" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+        会員ホーム
+      </a>
+      <div class="lg-nav__group-label" id="menuGroupTitle">会員メニュー</div>
+      <a class="lg-nav__link is-active" id="menuNavLink" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1.1l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"/><path d="M14 11a5 5 0 0 0-7.1-.1l-2 2A5 5 0 0 0 12 20l1.1-1.1"/></svg>
+        <span id="menuNavTitle">コンテンツを読み込み中</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="lg-main lg-main--embed">
+    <div class="lg-topbar">
+      <div style="display:flex; align-items:center;">
+        <button class="lg-menu-toggle" id="menuToggle" type="button" aria-label="メニューを開く" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div><p class="lg-eyebrow" id="menuPageCategory">会員メニュー</p><h1 class="lg-topbar__greeting" id="menuPageTitle">コンテンツを読み込み中</h1></div>
+      </div>
+      <div class="lg-embed-actions"><a class="lg-embed-home lg-embed-home--menu" href="dashboard.html">← ホームに戻る</a></div>
+    </div>
+    <div class="lg-embed-frame"><iframe id="menuFrame" src="about:blank" title="会員メニュー" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <p class="lg-embed-note" id="menuEmbedNote">対象ページをiframe内に表示しています。</p>
+  </main>
+</div>
+<script src="js/content-store.js"></script>
+<script src="js/menu-embed.js"></script>
+<script src="js/company-logo.js"></script>
+<script src="js/member-branding.js"></script>
+</body>
+</html>

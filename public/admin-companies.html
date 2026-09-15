@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rally 資産形成会員サイトの企業コードと企業名を管理します。">
+<title>企業コード管理 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+
+  <header class="admin-header">
+    <a href="login.html" class="admin-header__logo" aria-label="ログイン画面へ">
+      <img src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+    </a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-title">
+      <div>
+        <span>COMPANY SETTINGS</span>
+        <h1>企業コード管理</h1>
+        <p>ログインに使う企業コード、表示名、企業別の確定拠出年金・持株会リンク・FP相談URLを設定します。</p>
+      </div>
+    </div>
+
+    <div class="admin-layout">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head">
+          <span class="admin-panel__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4L16.5 3.5Z"/></svg>
+          </span>
+          <div>
+            <small>ADD / EDIT</small>
+            <h2>企業を登録する</h2>
+          </div>
+        </div>
+
+        <form id="companyForm" novalidate>
+          <label class="admin-field" for="adminCompanyCode">
+            <span>企業コード <small>半角英数字</small></span>
+            <input id="adminCompanyCode" name="companyCode" type="text" placeholder="例）kigyou1234" autocomplete="off" inputmode="latin" required>
+          </label>
+          <div class="admin-fixed-login-link">
+            <label for="adminCompanyFixedLink">固定ログインリンク <small>企業の保存後に安全な専用リンクを発行</small></label>
+            <div><input id="adminCompanyFixedLink" type="url" readonly placeholder="企業を保存すると発行されます"><button id="adminCompanyFixedLinkCopy" type="button" disabled>コピー</button><button id="adminCompanyFixedLinkRotate" type="button" disabled>再発行</button></div>
+            <p>このリンクを開くと企業コード入力を経由せず会員トップへ進みます。各会員ページのURLにも、発行された <code>?efk_login=...</code> を付けるとそのページへ直接進めます。</p>
+            <p>企業名・ロゴ・各種リンク設定の更新やサイトの再公開では、固定ログインリンクは変わりません。</p>
+            <strong>リンクは対象企業内だけで共有してください。リンクの再発行・企業の削除を行うと、配布済みのリンクは無効になります。企業コードを含む通常の編集では変わりません。</strong>
+          </div>
+          <label class="admin-field" for="adminCompanyName">
+            <span>表示する企業名</span>
+            <input id="adminCompanyName" name="companyName" type="text" placeholder="例）SCSK" autocomplete="off" required>
+          </label>
+          <label class="admin-field" for="adminCompanyLogo">
+            <span>利用者サイトの企業ロゴ <small>任意・12MB以下</small></span>
+            <input id="adminCompanyLogo" name="companyLogo" type="file" accept="image/jpeg,image/png,image/webp,image/gif">
+          </label>
+          <div class="admin-image-preview admin-company-logo-preview"><img id="adminCompanyLogoPreview" alt="企業ロゴのプレビュー" hidden><button id="adminCompanyLogoRemove" type="button" hidden>ロゴを外す</button></div>
+          <p class="admin-field__hint">設定すると、企業コードでログインした利用者サイトのrally 資産形成ロゴ部分が企業ロゴに変わります。透明・白い余白を自動調整し、縦横比を保って表示します。ロゴ未設定時はrally 資産形成の標準ロゴを表示します。管理画面のロゴは変わりません。</p>
+          <label class="admin-field" for="adminPensionName">
+            <span>確定拠出年金リンク名称 <small>任意</small></span>
+            <input id="adminPensionName" name="pensionName" type="text" placeholder="例）三井住友信託" autocomplete="off">
+          </label>
+          <label class="admin-field" for="adminPensionUrl">
+            <span>確定拠出年金ページURL <small>任意・https://</small></span>
+            <input id="adminPensionUrl" name="pensionUrl" type="url" placeholder="https://example.jp/member/" autocomplete="off" inputmode="url">
+          </label>
+          <label class="admin-field" for="adminStockPlanName">
+            <span>持株会サイト名称 <small>任意</small></span>
+            <input id="adminStockPlanName" name="stockPlanName" type="text" placeholder="例）従業員持株会" autocomplete="off">
+          </label>
+          <label class="admin-field" for="adminStockPlanUrl">
+            <span>持株会サイトURL <small>任意・https://</small></span>
+            <input id="adminStockPlanUrl" name="stockPlanUrl" type="url" placeholder="https://example.jp/stock-plan/" autocomplete="off" inputmode="url">
+          </label>
+          <label class="admin-field">
+            <span>FP相談 設定URL <small>任意・https://</small></span>
+            <input id="adminFpConsultationUrl" name="fpConsultationUrl" type="url" maxlength="2048" placeholder="https://kagoya-consul.co.jp/fp_lp/" autocomplete="off">
+          </label>
+          <p class="admin-field__hint">未設定の場合は https://kagoya-consul.co.jp/fp_lp/ を表示します。設定すると、この企業のFP相談ページすべてに反映されます。埋め込み表示が許可されたHTTPSのURLを入力してください。</p>
+          <p class="admin-field__hint">確定拠出年金・持株会ともに、名称とURLの両方を入力した企業だけ会員トップにリンクが表示されます。</p>
+          <p class="admin-field__preview">表示例：こんにちは、<strong>企業名</strong>のみなさん 👋</p>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit"><span id="companySubmitLabel">企業を追加</span> →</button>
+            <button class="admin-cancel" id="companyCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head">
+          <div>
+            <small>REGISTERED COMPANIES</small>
+            <h2>登録済み企業 <span id="companyCount">0社</span></h2>
+          </div>
+        </div>
+        <div class="admin-company-list" id="companyList" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/company-logo.js"></script>
+<script src="js/companies.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

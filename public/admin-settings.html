@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="rally 資産形成管理者のログインIDとパスワードを変更します。">
+<title>管理者設定 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ">
+      <img src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+    </a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main admin-settings-main">
+    <div class="admin-title">
+      <div>
+        <span>ACCOUNT SETTINGS</span>
+        <h1>管理者設定</h1>
+        <p>管理画面へログインするIDとパスワードを変更します。</p>
+      </div>
+    </div>
+
+    <section class="admin-panel admin-panel--form admin-settings-panel">
+      <div class="admin-panel__head">
+        <span class="admin-panel__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 21a7 7 0 0 1 14 0"/><path d="M19 4v4M17 6h4"/></svg>
+        </span>
+        <div><small>LOGIN CREDENTIALS</small><h2>ID・パスワード変更</h2></div>
+      </div>
+
+      <div class="admin-settings-current">現在の管理者ID <strong id="currentAdminId">―</strong></div>
+      <div class="admin-settings-alert" id="settingsAlert" role="alert" hidden></div>
+
+      <form id="adminSettingsForm" novalidate>
+        <label class="admin-field" for="currentAdminPassword">
+          <span>現在のパスワード</span>
+          <input id="currentAdminPassword" type="password" autocomplete="current-password" required>
+        </label>
+        <label class="admin-field" for="newAdminId">
+          <span>新しい管理者ID <small>3文字以上</small></span>
+          <input id="newAdminId" type="text" autocomplete="username" minlength="3" maxlength="50" required>
+        </label>
+        <label class="admin-field" for="newAdminPassword">
+          <span>新しいパスワード <small>8文字以上</small></span>
+          <input id="newAdminPassword" type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label class="admin-field" for="confirmAdminPassword">
+          <span>新しいパスワード（確認）</span>
+          <input id="confirmAdminPassword" type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <p class="admin-settings-note">変更後は安全のため自動的にログアウトします。新しいIDとパスワードで再度ログインしてください。</p>
+        <div class="admin-form-actions">
+          <button class="admin-submit" id="adminSettingsSubmit" type="submit">変更内容を保存</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="admin-panel admin-panel--form admin-settings-panel admin-users-panel">
+      <div class="admin-panel__head">
+        <span class="admin-panel__icon" aria-hidden="true">＋</span>
+        <div><small>ADMINISTRATOR ACCESS</small><h2>管理者アカウント管理</h2></div>
+      </div>
+      <p class="admin-users-intro">当社オーナーだけが管理できます。追加管理者には、操作を許可する管理画面と接続元IPを設定できます。</p>
+
+      <div class="admin-users-layout">
+        <form id="adminUserForm" novalidate>
+          <label class="admin-field" for="managedAdminId"><span>管理者ID <small>3文字以上</small></span><input id="managedAdminId" type="text" minlength="3" maxlength="50" autocomplete="off" required></label>
+          <label class="admin-field" for="managedAdminPassword"><span>パスワード <small id="managedPasswordHint">8文字以上</small></span><input id="managedAdminPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+          <label class="admin-field" for="managedAdminIpRanges"><span>許可するIP／CIDR <small>任意・最大50件</small></span><textarea id="managedAdminIpRanges" rows="5" spellcheck="false" autocomplete="off" placeholder="例）&#10;203.0.113.10&#10;198.51.100.0/24&#10;2001:db8::/48"></textarea></label>
+          <p class="admin-ip-policy-note">1行に1件入力してください。空欄は制限なしです。現在の接続元IP：<code class="current-admin-ip">確認中</code></p>
+          <fieldset class="admin-permission-fieldset">
+            <legend>利用を許可する管理機能</legend>
+            <div class="admin-permission-grid">
+              <label><input type="checkbox" name="permission" value="companies"><span>企業コード</span></label>
+              <label><input type="checkbox" name="permission" value="notice"><span>お知らせ</span></label>
+              <label><input type="checkbox" name="permission" value="seminar"><span>セミナー</span></label>
+              <label><input type="checkbox" name="permission" value="topic"><span>トピック</span></label>
+              <label><input type="checkbox" name="permission" value="consultation"><span>相談サービス</span></label>
+              <label><input type="checkbox" name="permission" value="expert"><span>専門家</span></label>
+              <label><input type="checkbox" name="permission" value="video"><span>動画</span></label>
+              <label><input type="checkbox" name="permission" value="service"><span>サービス</span></label>
+              <label><input type="checkbox" name="permission" value="mainvisual"><span>メインビジュアル</span></label>
+              <label><input type="checkbox" name="permission" value="menu"><span>左メニュー</span></label>
+              <label><input type="checkbox" name="permission" value="analytics"><span>アクセス分析</span></label>
+            </div>
+          </fieldset>
+          <fieldset class="admin-permission-fieldset admin-company-scope" id="analyticsCompanyScope" hidden>
+            <legend>アクセス分析を許可する企業</legend>
+            <p>この管理者が閲覧・PDF出力できる企業を1社以上選択してください。</p>
+            <div class="admin-permission-grid admin-company-scope__grid" id="analyticsCompanyOptions"></div>
+          </fieldset>
+          <div class="admin-form-actions">
+            <button class="admin-submit" id="adminUserSubmit" type="submit"><span id="adminUserSubmitLabel">管理者を追加</span> →</button>
+            <button class="admin-cancel" id="adminUserCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+
+        <div class="admin-users-list-wrap">
+          <div class="admin-list-head"><div><small>REGISTERED ADMINS</small><h2>登録済み管理者 <span id="adminUserCount">0名</span></h2></div></div>
+          <div class="admin-users-list" id="adminUserList" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="admin-settings-alert admin-users-status" id="adminUsersStatus" role="status" hidden></div>
+    </section>
+
+    <dialog class="admin-ip-dialog" id="adminIpDialog" aria-labelledby="adminIpDialogTitle">
+      <form method="dialog" id="adminIpDialogForm">
+        <div class="admin-ip-dialog__head">
+          <div><small>IP ACCESS POLICY</small><h2 id="adminIpDialogTitle">接続元IP設定</h2></div>
+          <button type="button" id="adminIpDialogClose" aria-label="閉じる">×</button>
+        </div>
+        <p><strong id="adminIpDialogAdmin">―</strong> が管理画面へ接続できるIPを設定します。</p>
+        <label class="admin-field" for="adminIpDialogRanges"><span>許可するIP／CIDR <small>1行に1件・最大50件</small></span><textarea id="adminIpDialogRanges" rows="7" spellcheck="false" placeholder="203.0.113.10&#10;198.51.100.0/24"></textarea></label>
+        <p class="admin-ip-policy-note">空欄で保存すると制限を解除します。現在の接続元IP：<code class="current-admin-ip">確認中</code>。オーナー自身の設定にはこのIPを必ず含めてください。</p>
+        <div class="admin-form-actions"><button class="admin-submit" id="adminIpDialogSave" type="submit">IP設定を保存</button><button class="admin-cancel" id="adminIpDialogCancel" type="button">キャンセル</button></div>
+      </form>
+    </dialog>
+
+    <section class="admin-panel admin-panel--form admin-settings-panel admin-access-log-panel">
+      <div class="admin-panel__head">
+        <span class="admin-panel__icon" aria-hidden="true">◎</span>
+        <div><small>ADMIN ACCESS LOG</small><h2>管理者アクセスログ</h2></div>
+      </div>
+      <div class="admin-access-log-intro">
+        <div>
+          <h3>管理者アカウントの利用状況を確認</h3>
+          <p>ログイン成功・失敗、ログアウト、管理画面の閲覧日時、IPアドレス、ブラウザ情報を1年間保存します。</p>
+        </div>
+        <a class="admin-submit admin-access-log-link" href="admin-access-logs.html">ログを確認 →</a>
+      </div>
+    </section>
+
+    <section class="admin-panel admin-panel--form admin-settings-panel admin-backup-panel">
+      <div class="admin-panel__head">
+        <span class="admin-panel__icon" aria-hidden="true">↕</span>
+        <div><small>BACKUP / RESTORE</small><h2>データのバックアップ</h2></div>
+      </div>
+
+      <div class="admin-backup-grid">
+        <article class="admin-backup-card">
+          <span class="admin-backup-card__number">01</span>
+          <h3>バックアップを保存</h3>
+          <p>CMSの投稿・見出し設定・企業情報・管理者権限・接続元IP設定・アクセス日次集計を、1つのJSONファイルとしてダウンロードします。</p>
+          <button class="admin-submit admin-backup-button" id="backupDownloadButton" type="button">バックアップをダウンロード</button>
+        </article>
+
+        <article class="admin-backup-card admin-backup-card--restore">
+          <span class="admin-backup-card__number">02</span>
+          <h3>ファイルからリストア</h3>
+          <p>保存済みのバックアップファイルを選び、現在のCMSデータ・企業情報・管理者権限・接続元IP設定・アクセス日次集計を置き換えます。</p>
+          <label class="admin-backup-file" for="backupRestoreFile">
+            <span id="backupRestoreFileLabel">JSONファイルを選択</span>
+            <input id="backupRestoreFile" type="file" accept="application/json,.json">
+          </label>
+          <button class="admin-submit admin-backup-button admin-backup-button--restore" id="backupRestoreButton" type="button" disabled>選択したファイルをリストア</button>
+        </article>
+      </div>
+
+      <p class="admin-backup-note">オーナーのID・パスワード、操作履歴、匿名セッション識別用ハッシュは含まれません。管理者ごとの接続元IP設定は含まれ、リストア時も現在のオーナーIPを除外する設定は拒否されます。企業コードと権限制限管理者の認証情報はハッシュ化済みで含まれるため、バックアップファイルは安全な場所に保管してください。</p>
+      <div class="admin-settings-alert admin-backup-status" id="backupStatus" role="status" hidden></div>
+    </section>
+
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/admin-auth.js"></script>
+<script src="js/admin-settings.js"></script>
+<script src="js/admin-users.js"></script>
+<script src="js/admin-backup.js"></script>
+</body>
+</html>

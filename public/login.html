@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ログイン | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="lg-login">
+
+  <img class="lg-login__mark" src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+  <p class="lg-eyebrow">WELCOME TO RALLY</p>
+  <h1 class="lg-login__headline"><span>お金のこと、</span><em>ひとりで考えなくて大丈夫。</em></h1>
+  <p class="lg-login__lead">できそうなことから始めましょう。</p>
+
+  <!-- 会員証カード：入館パスの概念 -->
+  <div class="lg-pass lg-pass--login">
+    <div class="lg-pass__inner">
+      <div class="lg-pass__head">
+        <div class="lg-pass__chip"></div>
+        <div class="lg-pass__bars">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="lg-pass__head-label">御社専用の企業コードを入力してください</div>
+
+      <div class="lg-alert" id="loginError" hidden>
+        <span>⚠</span>
+        <span>企業コードが正しくありません。ご所属企業から発行されたコードをご確認ください。</span>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="lg-field">
+          <label for="companyCode">
+            企業コード
+            <span class="lg-field__hint">半角英数字</span>
+          </label>
+          <input type="text" id="companyCode" name="companyCode" placeholder="例）kigyou1234" autocomplete="off" inputmode="latin" required>
+        </div>
+        <button type="submit" class="lg-btn lg-btn--gold">ホームへ進む →</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="lg-login__after" aria-label="ご利用案内">
+    <div class="lg-login__help">
+      <span class="lg-login__help-icon" aria-hidden="true">?</span>
+      <p>
+        <small>企業コードが分からない場合</small>
+        <strong>人事・総務担当者へお問い合わせください</strong>
+      </p>
+    </div>
+
+    <div class="lg-login__trust">
+      <article class="lg-login__trust-item lg-login__trust-item--free">
+        <span class="lg-login__trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12.5 9 17l11-11"/><circle cx="12" cy="12" r="9"/></svg>
+        </span>
+        <div class="lg-login__trust-num">何度でも無料</div>
+        <div class="lg-login__trust-label">回数を気にせず相談できます</div>
+      </article>
+      <article class="lg-login__trust-item lg-login__trust-item--secret">
+        <span class="lg-login__trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-5"/></svg>
+        </span>
+        <div class="lg-login__trust-num">秘密厳守</div>
+        <div class="lg-login__trust-label">ご相談内容は会社に伝わりません</div>
+      </article>
+      <article class="lg-login__trust-item lg-login__trust-item--anytime">
+        <span class="lg-login__trust-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </span>
+        <div class="lg-login__trust-num">好きな時間に</div>
+        <div class="lg-login__trust-label">自分のペースでいつでも使えます</div>
+      </article>
+    </div>
+
+    <p class="lg-login__footnote">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4 6v5c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-3Z"/></svg>
+      安心してご利用いただけるよう、プライバシーに配慮した設計です。
+    </p>
+  </section>
+
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>

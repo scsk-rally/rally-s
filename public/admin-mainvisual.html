@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="トップページのメインビジュアルを管理します。">
+<title>メインビジュアル管理 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main admin-mainvisual-page">
+    <div class="admin-title">
+      <div><span>MAIN VISUAL</span><h1>メインビジュアル管理</h1><p>トップページ最上部の文言・リンク・画像を編集します。レイアウトは固定です。</p></div>
+      <div class="admin-title__note"><span><strong>画像を自動調整</strong>アップロード時に表示に適したサイズへ縮小・圧縮します。</span></div>
+    </div>
+
+    <div class="admin-mainvisual-layout">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">✎</span><div><small>EDIT CONTENT</small><h2>表示内容を編集</h2></div></div>
+        <form id="mainVisualForm" novalidate>
+          <label class="admin-field" for="heroTitleLine1"><span>見出し1行目</span><input id="heroTitleLine1" name="titleLine1" type="text" required maxlength="30"></label>
+          <label class="admin-field" for="heroTitleLine2"><span>見出し2行目 <small>色付き部分</small></span><input id="heroTitleLine2" name="titleLine2" type="text" required maxlength="40"></label>
+          <label class="admin-field" for="heroLead"><span>説明文</span><textarea id="heroLead" name="lead" rows="3" required maxlength="140"></textarea></label>
+          <div class="admin-mainvisual-field-pair">
+            <label class="admin-field" for="heroPrimaryLabel"><span>左ボタン名</span><input id="heroPrimaryLabel" name="primaryLabel" type="text" required maxlength="30"></label>
+            <label class="admin-field" for="heroPrimaryUrl"><span>左ボタンURL</span><input id="heroPrimaryUrl" name="primaryUrl" type="text" required placeholder="#start／page.html／https://..."></label>
+          </div>
+          <div class="admin-mainvisual-field-pair">
+            <label class="admin-field" for="heroSecondaryLabel"><span>右ボタン名</span><input id="heroSecondaryLabel" name="secondaryLabel" type="text" required maxlength="30"></label>
+            <label class="admin-field" for="heroSecondaryUrl"><span>右ボタンURL</span><input id="heroSecondaryUrl" name="secondaryUrl" type="text" required placeholder="page.html／https://..."></label>
+          </div>
+          <fieldset class="admin-mainvisual-trust-fields">
+            <legend>右ボタン下の案内文</legend>
+            <input name="trust1" type="text" required maxlength="20" aria-label="案内文1">
+            <input name="trust2" type="text" required maxlength="20" aria-label="案内文2">
+            <input name="trust3" type="text" required maxlength="20" aria-label="案内文3">
+          </fieldset>
+          <label class="admin-field" for="mainVisualImage"><span>右側の画像 <small>PCから選択・自動調整</small></span><input id="mainVisualImage" name="imageFile" type="file" accept="image/*"></label>
+          <div class="admin-mainvisual-current-image"><img id="mainVisualImagePreview" alt="現在選択されているメインビジュアル画像"></div>
+          <p class="admin-field__hint">推奨：横長画像。アップロード時に縦横比を保ったまま最大1800×1000px以内へ縮小し、WebP形式で軽量化します。</p>
+          <button class="admin-submit admin-mainvisual-submit" type="submit">変更を保存 →</button>
+        </form>
+      </section>
+
+      <section class="admin-panel admin-mainvisual-preview-panel" aria-label="表示プレビュー">
+        <div class="admin-list-head"><div><small>LIVE PREVIEW</small><h2>表示プレビュー</h2></div></div>
+        <div class="admin-mainvisual-preview">
+          <img id="mainVisualPreviewImage" alt="" aria-hidden="true">
+          <div class="admin-mainvisual-preview__copy">
+            <h3><span id="mainVisualPreviewTitle1"></span><br><em id="mainVisualPreviewTitle2"></em></h3>
+            <p id="mainVisualPreviewLead"></p>
+            <div class="admin-mainvisual-preview__actions"><span id="mainVisualPreviewPrimary"></span><span id="mainVisualPreviewSecondary"></span></div>
+            <div class="admin-mainvisual-preview__trust"><span id="mainVisualPreviewTrust1"></span><span id="mainVisualPreviewTrust2"></span><span id="mainVisualPreviewTrust3"></span></div>
+          </div>
+        </div>
+        <p class="admin-mainvisual-preview-note">実際のトップページでは、画面幅に合わせて画像位置と文字サイズが自動調整されます。</p>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/content-store.js"></script>
+<script src="js/admin-mainvisual.js"></script>
+</body>
+</html>

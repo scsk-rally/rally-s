@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#174e43"><title>みらいのお金 — 3ステップのライフプラン</title><link rel="stylesheet" href="style.css?v=20260915-6"></head>
+<body>
+<main class="app">
+  <aside class="story">
+    <a class="brand" href="./" aria-label="みらいのお金 トップ"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M15 29V16C3 19 2 7 3 4c11 0 14 5 12 12M16 22C16 7 23 3 29 2c2 13-4 20-13 20" fill="currentColor"/></svg>みらいのお金<span>LIFE PLAN</span></a>
+    <div class="story-copy"><span class="eyebrow">A LITTLE PLAN, A BETTER TOMORROW.</span><h1>これからの暮らしに、<br>お金の見通しを。</h1><p>いまを知って、未来を描く。<br>あなたのペースで、はじめましょう。</p></div>
+    <ol class="steps" aria-label="進行状況"><li data-step="1" class="active"><span>01</span><div>いまの家計<small>現在地を知る</small></div><b>↗</b></li><li data-step="2"><span>02</span><div>これからの暮らし<small>未来を描く</small></div><b>↗</b></li><li data-step="3"><span>03</span><div>お金の見通し<small>変化を試してみる</small></div><b>↗</b></li></ol>
+    <div class="landscape" aria-hidden="true"><svg viewBox="0 0 400 165" fill="none"><path d="M0 143c64-31 131-31 205-9s132 8 195-11v42H0Z" fill="#dfe9d8"/><path d="M78 128V75l48-37 49 37v53Z" fill="#eae8d7"/><path d="m68 78 58-47 60 47" stroke="#6c927e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M117 128V96h22v32" fill="#628b76"/><path d="M93 82h15v17H93zm52 0h15v17h-15z" fill="#9fb7a1"/><path d="M265 136V68" stroke="#6b8260" stroke-width="4"/><ellipse cx="263" cy="61" rx="24" ry="46" fill="#92ac86"/><path d="M264 134V65m0 29 11-15" stroke="#69865f" stroke-width="2"/><ellipse cx="309" cy="86" rx="16" ry="34" fill="#c1cfac"/><path d="M309 139V86" stroke="#8ea078" stroke-width="2"/><circle cx="211" cy="37" r="17" fill="#e9c396"/><path d="M190 139c12-17 29-18 40-1" fill="#b1c7a2"/><path d="M42 143h302" stroke="#8aa085" stroke-linecap="round"/></svg><span>小さな一歩が、未来につながる。</span></div>
+    <div class="private-note"><span aria-hidden="true">♧</span> 入力した情報は、この端末内だけで計算します。</div>
+  </aside>
+  <section class="workspace">
+    <header class="mobile-brand">みらいのお金 <span>LIFE PLAN</span></header>
+    <div class="topline"><span id="step-label">STEP 01 / 03</span><div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div><button id="assumptions" class="text-button">計算の前提 <span aria-hidden="true">ⓘ</span></button></div>
+    <form id="plan-form" novalidate>
+    <section id="screen-1" class="screen">
+      <div class="screen-heading"><span class="eyebrow">YOUR PRESENT</span><h2 tabindex="-1">いまの家計を<br class="mobile-break">教えてください。</h2><p>ざっくりの金額で大丈夫。まずは4つだけ。</p></div>
+      <div class="fields">
+        <label class="field" for="age"><span class="field-title"><span class="field-no">01</span>あなたの年齢</span><span class="input-wrap"><input id="age" name="age" type="number" inputmode="numeric" min="18" max="64" step="1" placeholder="35" required><span>歳</span></span><small>18〜64歳の方を対象としています</small></label>
+        <label class="field" for="assets"><span class="field-title"><span class="field-no">02</span>いまの貯蓄・投資</span><span class="input-wrap"><input id="assets" name="assets" type="number" inputmode="decimal" min="0" max="1000000" step="0.1" placeholder="500" required><span>万円</span></span><small>預貯金・投資の合計。不動産は含みません</small></label>
+        <label class="field" for="income"><span class="field-title"><span class="field-no">03</span>世帯の手取り月収</span><span class="input-wrap"><input id="income" name="income" type="number" inputmode="decimal" min="0" max="10000" step="0.1" placeholder="35" required><span>万円</span></span><small>年間の手取りボーナス ÷ 12も加算</small></label>
+        <label class="field" for="spending"><span class="field-title"><span class="field-no">04</span>毎月の支出</span><span class="input-wrap"><input id="spending" name="spending" type="number" inputmode="decimal" min="0" max="10000" step="0.1" placeholder="28" required><span>万円</span></span><small>住居・教育・返済を含む／貯蓄・投資を除く</small></label>
+      </div>
+      <div class="balance"><div><span>いまの、毎月の収支</span><small>手取り月収 − 支出</small></div><strong id="balance">—<em>万円</em></strong></div>
+      <div class="sample-line"><span id="sample-note">金額が分からない方は</span><button type="button" class="text-button" id="sample">サンプルで試す ↗</button></div>
+    </section>
+    <section id="screen-2" class="screen" hidden>
+      <div class="screen-heading"><span class="eyebrow">YOUR FUTURE</span><h2 tabindex="-1">これからの暮らしは？</h2><p>将来のことは、いまのイメージで。</p></div>
+      <div class="future-fields">
+        <label class="field horizontal" for="retire"><span class="field-title">仕事収入が終わる年齢<small>世帯全体の終了時期を、あなたの年齢で</small></span><span class="input-wrap"><input id="retire" name="retire" type="number" inputmode="numeric" min="19" max="75" step="1" value="65" required><span>歳</span></span></label>
+        <label class="field horizontal" for="pension"><span class="field-title">将来の収入（月額）<small>年金＋家賃収入などの手取り合計<br>65歳から計上・1枚目の仕事収入は除く</small></span><span class="input-wrap"><input id="pension" name="pension" type="number" inputmode="decimal" min="0" max="10000" step="0.1" placeholder="20" required><span>万円</span></span></label>
+        <label class="field horizontal" for="futureSpending"><span class="field-title">仕事を終えた後の支出<small>現在の支出を仮置き。自由に変更できます</small></span><span class="input-wrap"><input id="futureSpending" name="futureSpending" type="number" inputmode="decimal" min="0" max="10000" step="0.1" placeholder="25" required><span>万円</span></span></label>
+        <label class="field horizontal retirement-field" for="retirementPay"><span class="field-title">退職金（予定）<small>手取り・一時金のみ／なしの場合は0<br>参考平均 1,623万円（大卒等・定年）<button type="button" id="retirement-source" class="source-link">出典・条件</button></small></span><span class="input-wrap"><input id="retirementPay" name="retirementPay" type="number" inputmode="decimal" min="0" max="1000000" step="0.1" value="0" required><span>万円</span></span></label>
+      </div>
+      <div class="pension-help"><button id="assume-pension" type="button" class="text-button">将来の収入が不明：仮の合計20万円で試す</button></div>
+      <fieldset class="events"><legend>大きな出費を1つ追加 <span>任意</span></legend><div class="chips" id="event-types"><button type="button" data-event="なし" aria-pressed="true">なし</button><button type="button" data-event="教育" aria-pressed="false">教育</button><button type="button" data-event="住まい" aria-pressed="false">住まい</button><button type="button" data-event="その他" aria-pressed="false">その他</button></div><div id="event-fields" hidden><label class="field" for="eventAge"><span class="field-title">あなたが何歳のとき？</span><span class="input-wrap"><input id="eventAge" type="number" inputmode="numeric" min="18" max="89" step="1" placeholder="50"><span>歳</span></span></label><label class="field" for="eventAmount"><span class="field-title">追加の持ち出し額</span><span class="input-wrap"><input id="eventAmount" type="number" inputmode="decimal" min="0.1" max="1000000" step="0.1" placeholder="300"><span>万円</span></span></label><small>月の支出に含めていない金額だけを入力</small></div></fieldset>
+    </section>
+    <section id="screen-3" class="screen" hidden>
+      <div class="screen-heading"><span class="eyebrow">YOUR OUTLOOK</span><h2 tabindex="-1">未来のお金の見通し。</h2><button type="button" id="pdf-export" class="text-button pdf-export" hidden>PDF出力 ↓</button></div>
+      <div class="verdict good" id="verdict" role="status"><span id="verdict-icon" class="verdict-icon" aria-hidden="true">✓</span><div><span class="verdict-context" id="verdict-context">いまの条件での判定</span><strong id="verdict-title">90歳まで資金が持つ見通し</strong><p id="outlook"></p></div></div>
+      <button type="button" id="advice-button" class="text-button advice-button">この結果へのアドバイスを見る ↗</button>
+      <div class="result-summary"><div><span id="retire-label">65歳の金融資産</span><strong id="retire-value"></strong></div><div><span id="end-label">90歳時点</span><strong id="end-value"></strong></div></div>
+      <div class="chart-header"><span>金融資産の推移 <small>（万円）</small></span><div><span class="legend original">いまの条件</span><span class="legend improved" id="comparison-legend" hidden>見直し後</span></div></div>
+      <div id="chart" class="chart"></div>
+      <div class="comparison"><div class="comparison-heading"><strong id="saving-label">毎月の支出を見直すと？</strong><span>現在〜90歳に適用</span></div><div id="savings" class="saving-controls"><input id="saving-slider" type="range" min="0" max="10" step="0.1" value="0" aria-label="毎月の支出を減らす額（万円）"><label class="saving-number"><span>−</span><input id="saving-amount" type="number" inputmode="decimal" min="0" max="10" step="0.1" value="0" aria-label="毎月の支出を減らす額（万円・直接入力）"><span>万円/月</span></label><button type="button" id="saving-reset" aria-label="見直し額を0に戻す">↺</button></div><div class="saving-limit" id="saving-limit">0〜10万円・0.1万円単位</div><p id="improvement" aria-live="polite">小さな見直しで、未来がどう変わるか試してみましょう。</p></div>
+    </section>
+    <footer class="actions"><p id="error" role="alert"></p><div class="action-row"><button type="button" id="back" class="back" hidden>← 戻る</button><span class="step-hint" id="step-hint">あと2ステップで、未来が見えてきます</span><button type="submit" id="next" class="primary">次へ <span aria-hidden="true">→</span></button></div><p class="footnote" id="footnote">登録不要 · 入力内容は保存されません</p></footer>
+    </form>
+  </section>
+</main>
+<dialog id="info"><div class="dialog-heading"><h2>計算の前提</h2><button class="close" aria-label="閉じる">×</button></div><p>将来を考えるための、固定条件による概算です。</p><ul><li>現在から90歳まで、1年ごとの収支を計算します。</li><li>運用・物価上昇・昇給は0%。退職金は仕事収入の終了年齢に達した時点で、入力した手取り一時金を1回だけ加算します。年金形式で受け取る分は将来の月収へ入力し、二重計上を避けてください。</li><li>仕事収入は指定年齢で終了。将来の収入は年金・家賃収入などの手取り合計を、本人の65歳から90歳まで一定額で計上します。1枚目の仕事収入は重複して含めず、65歳以降も継続する場合は別途併算します。</li><li>家族別の退職・年金時期、年金の支給調整は扱いません。</li><li>支出の見直しは現役・退職後の両方に適用し、0円を下限とします。</li><li>残高がマイナスの部分は累積の必要資金です。自動借入や借入利息は計算しません。</li><li>入力は手取り額。税・社会保険料を再控除しません。</li></ul><p class="info-end">結果は将来を保証するものではありません。入力情報は外部に送信せず、再読み込みで消去されます。</p><button class="primary close">閉じる</button></dialog>
+<dialog id="advice-dialog"><div class="dialog-heading"><h2>あなたへのアドバイス</h2><button class="close" aria-label="閉じる">×</button></div><p id="advice-context"></p><ol id="advice-list"></ol><p class="info-end">入力条件に基づく一般的なアドバイスです。PDFにも同じ内容を掲載します。</p><button class="primary close">閉じる</button></dialog>
+<script src="vendor/pdf-lib.min.js"></script><script src="engine.js?v=20260915-6"></script><script src="pdf-export.js?v=20260915-6"></script><script src="app.js?v=20260915-6"></script>
+</body></html>

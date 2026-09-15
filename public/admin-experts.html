@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="相談したい専門家の選択カードを管理します。">
+<title>専門家管理 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body" data-content-type="expert">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-title">
+      <div><span>EXPERT MANAGEMENT</span><h1>専門家管理</h1><p>「相談したい専門家をお選びください」に表示する相談窓口を管理します。</p></div>
+      <div class="admin-title__note"><span><strong>最大6件・上下2段</strong>番号の小さい専門家から順番に配置されます。</span></div>
+    </div>
+    <div class="admin-layout">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">＋</span><div><small>ADD / EDIT</small><h2>専門家を登録</h2></div></div>
+        <form id="contentForm" novalidate>
+          <label class="admin-field" for="expertTitle"><span>専門家名</span><input id="expertTitle" name="title" type="text" required placeholder="例）司法書士"></label>
+          <label class="admin-field" for="expertEnglishLabel"><span>画像上の英語ラベル</span><input id="expertEnglishLabel" name="englishLabel" type="text" placeholder="例）JUDICIAL SCRIVENER"></label>
+          <label class="admin-field" for="expertConsultationLabel"><span>相談分野</span><input id="expertConsultationLabel" name="consultationLabel" type="text" placeholder="例）登記・相続に関するご相談"></label>
+          <label class="admin-field" for="expertDescription"><span>説明文</span><textarea id="expertDescription" name="description" placeholder="カード内に表示する説明文"></textarea></label>
+          <label class="admin-field" for="expertButtonLabel"><span>リンクボタン名</span><input id="expertButtonLabel" name="buttonLabel" type="text" placeholder="例）司法書士相談へ進む"></label>
+          <label class="admin-field" for="expertRecipientName"><span>申し込み情報の送信先</span><input id="expertRecipientName" name="recipientName" type="text" placeholder="例）〇〇司法書士事務所"></label>
+          <label class="admin-field" for="expertTargetUrl"><span>対象URL <small>外部URL／内部HTML</small></span><input id="expertTargetUrl" name="targetUrl" type="text" required placeholder="https://example.com/ または page.html"></label>
+          <p class="admin-field__hint">リンクボタンを押すと、共通のiframeページ内に対象URLを表示します。</p>
+          <label class="admin-field" for="contentImage"><span>専門家画像 <small>PCから選択・1.5MB以下</small></span><input id="contentImage" name="imageFile" type="file" accept="image/*"></label>
+          <div class="admin-image-preview"><img id="contentImagePreview" alt="選択した画像のプレビュー" hidden><button id="contentImageRemove" type="button" hidden>画像を外す</button></div>
+          <label class="admin-field" for="expertOrder"><span>表示順 <small>番号が小さい順</small></span><input id="expertOrder" name="order" type="number" min="1" max="99" value="1" required></label>
+          <div class="admin-schedule-fields">
+            <label class="admin-field" for="expertStartAt"><span>公開開始日時 <small>任意</small></span><input id="expertStartAt" name="startAt" type="datetime-local"></label>
+            <label class="admin-field" for="expertEndAt"><span>公開終了日時 <small>任意・空欄は無期限</small></span><input id="expertEndAt" name="endAt" type="datetime-local"></label>
+          </div>
+          <label class="admin-visibility"><input name="visible" type="checkbox" checked><span><b>サイトに表示する</b><small>オフにすると公開期間内でも非表示になります</small></span></label>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit"><span id="contentSubmitLabel">専門家を追加</span> →</button>
+            <button class="admin-cancel" id="contentCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head"><div><small>REGISTERED EXPERTS</small><h2>登録済み専門家 <span id="contentCount">0 / 6件</span></h2></div></div>
+        <div class="admin-company-list" id="contentList" aria-live="polite"></div>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/content-store.js"></script>
+<script src="js/admin-content.js"></script>
+</body>
+</html>

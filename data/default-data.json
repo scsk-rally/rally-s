@@ -1,0 +1,443 @@
+{
+  "content": {
+    "hero": [
+      {
+        "id": "hero-default-1",
+        "titleLine1": "お金のこと、",
+        "titleLine2": "ちょっとずつで大丈夫。",
+        "lead": "気になることを読んだり、未来をのぞいたり。今日はできそうなことを、まずはひとつだけ",
+        "primaryLabel": "今日できることを見る",
+        "primaryUrl": "#start",
+        "secondaryLabel": "お金の専門家に聞いてみる",
+        "secondaryUrl": "embed-fp.html",
+        "trust1": "相談は無料",
+        "trust2": "秘密厳守",
+        "trust3": "勧誘はありません",
+        "image": "images/asset-growth-hero-v4-female.webp",
+        "updatedAt": "2026-08-03T09:00"
+      }
+    ],
+    "menu": [
+      {
+        "id": "menu-default-1",
+        "updatedAt": "2026-08-03T09:00",
+        "groups": [
+          {
+            "title": "まずはここ",
+            "items": [
+              {
+                "id": "home",
+                "label": "ホーム",
+                "url": "dashboard.html",
+                "order": 1,
+                "visible": true
+              },
+              {
+                "id": "seminar",
+                "label": "セミナー",
+                "url": "seminar.html",
+                "order": 2,
+                "visible": true
+              }
+            ]
+          },
+          {
+            "title": "誰かに聞きたい",
+            "items": [
+              {
+                "id": "fp",
+                "label": "お金のことを相談",
+                "url": "embed-fp.html",
+                "order": 1,
+                "visible": true
+              },
+              {
+                "id": "investment",
+                "label": "投資のことを相談",
+                "url": "embed-toshi.html",
+                "order": 2,
+                "visible": true
+              },
+              {
+                "id": "expert",
+                "label": "専門家に相談",
+                "url": "expert.html",
+                "order": 3,
+                "visible": true
+              }
+            ]
+          },
+          {
+            "title": "自分で試したい",
+            "items": [
+              {
+                "id": "video",
+                "label": "動画をみる",
+                "url": "#video-section",
+                "order": 1,
+                "visible": true
+              },
+              {
+                "id": "article",
+                "label": "3分記事をよむ",
+                "url": "embed-manehapi.html",
+                "order": 2,
+                "visible": true
+              },
+              {
+                "id": "lifeplan",
+                "label": "未来をのぞく",
+                "url": "embed-lifeplan.html",
+                "order": 3,
+                "visible": true
+              }
+            ]
+          },
+          {
+            "title": "もっと便利に",
+            "items": [
+              {
+                "id": "roboadvisor",
+                "label": "AIロボアドバイザー",
+                "url": "https://ai.folio-sec.com/alliance-adv?alliance_partner=efukuri",
+                "order": 1,
+                "visible": true
+              },
+              {
+                "id": "medical",
+                "label": "オンライン診療",
+                "url": "embed-iryo.html",
+                "order": 2,
+                "visible": true
+              },
+              {
+                "id": "learning",
+                "label": "資格支援",
+                "url": "https://aircourse.com/scsk.html",
+                "order": 3,
+                "visible": true
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "section": [
+      {
+        "id": "topics",
+        "title": "どこから始める？",
+        "eyebrow": "さて、今日は",
+        "lead": "1分だけでも、相談だけでも。\n気分に合うものを選んでください。",
+        "visible": true,
+        "updatedAt": "2026-08-27T09:00"
+      },
+      {
+        "id": "consultations",
+        "title": "モヤモヤは、話すと少し軽くなる",
+        "lead": "相談したいことが決まっていなくても大丈夫。近そうなテーマを選んでください。",
+        "note": "各相談サービスはrally 資産形成協業企業様の専用サイトへリンクしております",
+        "visible": true,
+        "updatedAt": "2026-08-27T09:00"
+      },
+      {
+        "id": "videos",
+        "title": "すきま時間に、動画で学ぶ",
+        "badgeText": "NEW",
+        "badgeVisible": true,
+        "linkLabel": "セミナー情報を見る",
+        "linkUrl": "seminar.html",
+        "visible": true,
+        "updatedAt": "2026-08-27T09:00"
+      },
+      {
+        "id": "services",
+        "title": "仕事と暮らしに役立つサービス",
+        "badgeText": "BENEFITS",
+        "badgeVisible": true,
+        "lead": "毎日を少しラクに、これからを少し豊かに。",
+        "note": "各サービスはrally 資産形成協業企業様の専用サイトへリンクしております",
+        "visible": true,
+        "updatedAt": "2026-08-27T09:00"
+      }
+    ],
+    "notice": [
+      {
+        "id": "notice-default-1",
+        "title": "8/5 セミナーを開催します",
+        "body": "人生後半の「お金戦略」をテーマに、12:00からオンラインで開催します。",
+        "linkUrl": "seminar.html",
+        "linkLabel": "詳細を見る",
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      }
+    ],
+    "seminar": [
+      {
+        "id": "seminar-default-1",
+        "title": "人生後半の「お金戦略」",
+        "summary": "ミドルエイジ向け\nセカンドライフに備える資産運用",
+        "eventDate": "2026-08-05",
+        "eventTime": "12:00〜12:50",
+        "format": "オンライン（Zoom）",
+        "audience": "全役職者（任意）",
+        "instructor": "SMBCコンシューマーファイナンス　深津遥氏",
+        "agenda": "人生100年時代、セカンドライフに備える\n医療・介護・年金など将来に備える\nNISA・iDeCoを活用した資産形成のポイント",
+        "linkUrl": "https://zoom.us/j/97349527711?pwd=IMAT3GMCjb6gTo9oyW1bQC0j39I13o.1",
+        "image": "images/seminar-secondlife-title-20260805.jpg",
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      }
+    ],
+    "video": [
+      {
+        "id": "video-default-1",
+        "title": "資産形成の鉄則",
+        "category": "資産形成",
+        "youtubeUrl": "https://youtu.be/_eBBXVTarlQ",
+        "youtubeId": "_eBBXVTarlQ",
+        "image": "",
+        "duration": "3:21",
+        "order": 1,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      },
+      {
+        "id": "video-default-2",
+        "title": "資産を守る",
+        "category": "資産形成",
+        "youtubeUrl": "https://youtu.be/Iyf8naulfNc",
+        "youtubeId": "Iyf8naulfNc",
+        "image": "",
+        "duration": "3:16",
+        "order": 2,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:05",
+        "updatedAt": "2026-08-03T09:05"
+      }
+    ],
+    "service": [
+      {
+        "id": "service-default-1",
+        "title": "AIロボアドバイザー",
+        "category": "資産運用",
+        "hint": "AIにおまかせ",
+        "description": "運用プランの提案から見直しまで、AIがまとめてサポートします。",
+        "buttonLabel": "サービスを見る",
+        "targetUrl": "https://ai.folio-sec.com/alliance-adv?alliance_partner=efukuri",
+        "linkMode": "iframe",
+        "order": 1,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      },
+      {
+        "id": "service-default-2",
+        "title": "オンライン診療",
+        "category": "ヘルスケア",
+        "hint": "すきま時間に受診",
+        "description": "予約から受診までスマホで完結。忙しい日にも気軽に相談できます。",
+        "buttonLabel": "診療サービスを見る",
+        "targetUrl": "https://oops-jp.com/?efukuri",
+        "linkMode": "iframe",
+        "order": 2,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:05",
+        "updatedAt": "2026-08-03T09:05"
+      },
+      {
+        "id": "service-default-3",
+        "title": "資格取得支援",
+        "category": "スキルアップ",
+        "hint": "学びたい気持ちを応援",
+        "description": "資格取得講座を会員価格で。仕事に活きる学びを続けられます。",
+        "buttonLabel": "対象講座を見る",
+        "targetUrl": "https://aircourse.com/scsk.html",
+        "linkMode": "iframe",
+        "order": 3,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:10",
+        "updatedAt": "2026-08-03T09:10"
+      }
+    ],
+    "expert": [
+      {
+        "id": "expert-default-1",
+        "title": "弁護士",
+        "englishLabel": "LEGAL",
+        "consultationLabel": "法律に関するご相談",
+        "description": "相続・契約・家族や暮らしの法律問題を、専門家へ相談できます。",
+        "buttonLabel": "弁護士相談へ進む",
+        "recipientName": "シグマ麹町法律事務所",
+        "targetUrl": "https://kagoya-consul.co.jp/horitsu_lp/",
+        "image": "images/expert-lawyer-male-image2-v2.webp",
+        "order": 1,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      },
+      {
+        "id": "expert-default-2",
+        "title": "税理士",
+        "englishLabel": "TAX",
+        "consultationLabel": "税金に関するご相談",
+        "description": "相続税・贈与税・確定申告など、税務に関する疑問を相談できます。",
+        "buttonLabel": "税理士相談へ進む",
+        "recipientName": "NEXTi法律会計事務所",
+        "targetUrl": "https://kagoya-consul.co.jp/zeimu_lp/",
+        "image": "images/expert-tax-image2.webp",
+        "order": 2,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:05",
+        "updatedAt": "2026-08-03T09:05"
+      },
+      {
+        "id": "expert-default-3",
+        "title": "不動産",
+        "englishLabel": "REAL ESTATE",
+        "consultationLabel": "住まい・不動産のご相談",
+        "description": "購入・売却・活用・相続不動産など、住まいの悩みを相談できます。",
+        "buttonLabel": "不動産相談へ進む",
+        "recipientName": "株式会社籠や",
+        "targetUrl": "https://kagoya-consul.co.jp/fudosan_lp/",
+        "image": "images/expert-realestate-male-image2-v2.webp",
+        "order": 3,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:10",
+        "updatedAt": "2026-08-03T09:10"
+      }
+    ],
+    "consultation": [
+      {
+        "id": "consultation-default-1",
+        "title": "FPにまるごと相談",
+        "tag": "暮らしのお金",
+        "description": "NISA・住宅・年金・保険など、暮らしとお金の疑問を整理できます。",
+        "buttonLabel": "無料で予約する",
+        "targetUrl": "embed-fp.html",
+        "image": "images/service-fp-illustration-v3-720.webp",
+        "order": 1,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      },
+      {
+        "id": "consultation-default-2",
+        "title": "投資の作戦を相談",
+        "tag": "資産運用",
+        "description": "自分に合う運用方針や商品選びを、専門家と一緒に考えられます。",
+        "buttonLabel": "相談をはじめる",
+        "targetUrl": "embed-toshi.html",
+        "image": "images/service-invest-illustration-v3-720.webp",
+        "order": 2,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:05",
+        "updatedAt": "2026-08-03T09:05"
+      },
+      {
+        "id": "consultation-default-3",
+        "title": "専門家にじっくり相談",
+        "tag": "法律・税務・不動産",
+        "description": "法律・税務・不動産など、専門性の高いテーマを相談先から選べます。",
+        "buttonLabel": "専門家を頼る",
+        "targetUrl": "expert.html",
+        "image": "images/service-expert-illustration-v3-720.webp",
+        "order": 3,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:10",
+        "updatedAt": "2026-08-03T09:10"
+      }
+    ],
+    "topic": [
+      {
+        "id": "topic-default-1",
+        "title": "未来をちょっと\nのぞいてみる",
+        "badge": "おすすめ・約5分",
+        "icon": "🌱",
+        "subtitle": "かんたんシミュレーション",
+        "buttonLabel": "やってみる",
+        "targetUrl": "embed-lifeplan.html",
+        "order": 1,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:00",
+        "updatedAt": "2026-08-03T09:00"
+      },
+      {
+        "id": "topic-default-2",
+        "title": "誰かに\n聞いてみる",
+        "badge": "無料",
+        "icon": "💬",
+        "subtitle": "まとまっていなくてもOK",
+        "buttonLabel": "相談する",
+        "targetUrl": "embed-fp.html",
+        "order": 2,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:05",
+        "updatedAt": "2026-08-03T09:05"
+      },
+      {
+        "id": "topic-default-3",
+        "title": "ひとつだけ\n読んでみる",
+        "badge": "約3分",
+        "icon": "☕",
+        "subtitle": "マネハピ通信で最新記事をチェック",
+        "buttonLabel": "読んでみる",
+        "targetUrl": "embed-manehapi.html",
+        "order": 3,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:10",
+        "updatedAt": "2026-08-03T09:10"
+      },
+      {
+        "id": "topic-default-4",
+        "title": "セミナー・動画で\nゆるく学ぶ",
+        "badge": "ながら見OK",
+        "icon": "▶",
+        "subtitle": "無料セミナーを公開中",
+        "buttonLabel": "動画を選ぶ",
+        "targetUrl": "#video-section",
+        "order": 4,
+        "visible": true,
+        "startAt": "",
+        "endAt": "",
+        "createdAt": "2026-08-03T09:15",
+        "updatedAt": "2026-08-03T09:15"
+      }
+    ]
+  },
+  "companies": []
+}

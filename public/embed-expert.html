@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>専門家相談 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="lg-body--embed">
+<div class="lg-shell">
+  <aside class="lg-side" id="sideNav">
+    <div class="lg-side__logo"><img class="is-company-logo" src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></div>
+    <nav class="lg-nav">
+      <div class="lg-nav__group-label">ホーム</div>
+      <a class="lg-nav__link" href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>会員ホーム</a>
+      <div class="lg-nav__group-label">相談</div>
+      <a class="lg-nav__link" href="embed-fp.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>FP相談</a>
+      <a class="lg-nav__link" href="embed-toshi.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5"/><rect x="12" y="8" width="3" height="9"/><rect x="17" y="5" width="3" height="12"/></svg>投資助言</a>
+      <a class="lg-nav__link is-active" id="expertNavLink" href="expert.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 8l-3 6a4 4 0 0 0 8 0z"/><path d="M19 8l-3 6a4 4 0 0 0 8 0z"/><path d="M5 8h14"/></svg><span id="expertNavTitle">専門家相談</span></a>
+      <div class="lg-nav__group-label">学ぶ</div>
+      <a class="lg-nav__link" href="dashboard.html#video-section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="15" height="12" rx="2"/><path d="M21 8v6l-3-3z"/></svg>無料セミナー・動画</a>
+    </nav>
+  </aside>
+
+  <main class="lg-main lg-main--embed">
+    <div class="lg-topbar">
+      <div style="display:flex; align-items:center;">
+        <button class="lg-menu-toggle" id="menuToggle" aria-label="メニューを開く"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+        <div><p class="lg-eyebrow" id="expertCategory">専門家へ相談する</p><h1 class="lg-topbar__greeting" id="expertPageTitle">相談窓口を読み込み中</h1></div>
+      </div>
+      <div class="lg-embed-actions">
+        <a class="lg-embed-home" href="expert.html">← 専門家選択へ戻る</a>
+      </div>
+    </div>
+    <div class="lg-embed-frame"><iframe id="expertFrame" src="about:blank" title="専門家相談" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+    <p class="lg-embed-note" id="expertEmbedNote">専門家の申し込みページをiframe内に表示しています。</p>
+  </main>
+</div>
+<script src="js/content-store.js"></script>
+<script src="js/expert-embed.js"></script>
+<script src="js/company-logo.js"></script>
+<script src="js/member-branding.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

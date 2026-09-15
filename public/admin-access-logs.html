@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="管理者アカウントのログインと管理画面閲覧履歴を確認します。">
+<title>管理者アクセスログ | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin-settings.html"><span aria-hidden="true">←</span> 管理者設定へ</a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+  <main class="admin-main admin-access-logs">
+    <div class="admin-title">
+      <div><span>ADMIN ACCESS LOG</span><h1>管理者アクセスログ</h1><p>管理者アカウントのログインと管理画面へのアクセスを確認します。</p></div>
+    </div>
+
+    <section class="analytics-filter admin-log-filter" aria-label="ログ検索条件">
+      <label>管理者<select id="adminLogAccount"><option value="">すべての管理者</option></select></label>
+      <label>種類<select id="adminLogAction">
+        <option value="">すべての種類</option>
+        <option value="admin.login.success">ログイン成功</option>
+        <option value="admin.login.failure">ログイン失敗</option>
+        <option value="admin.login.blocked">ログイン制限</option>
+        <option value="admin.login.ip-denied">IP制限で拒否</option>
+        <option value="admin.logout">ログアウト</option>
+        <option value="admin.page.view">管理画面閲覧</option>
+      </select></label>
+      <label>開始日<input id="adminLogFrom" type="date" required></label>
+      <label>終了日<input id="adminLogTo" type="date" required></label>
+      <button class="analytics-button" id="adminLogRefresh" type="button">表示更新</button>
+      <button class="analytics-button analytics-button--pdf" id="adminLogCsv" type="button">CSVダウンロード</button>
+    </section>
+    <p class="analytics-status" id="adminLogStatus" role="status">読み込み中です…</p>
+
+    <section class="analytics-panel admin-log-panel">
+      <div class="analytics-panel__head">
+        <div><small>ACCESS HISTORY</small><h2>アクセス履歴</h2></div>
+        <p id="adminLogCount">0件</p>
+      </div>
+      <div class="analytics-table-wrap">
+        <table class="analytics-table admin-log-table">
+          <thead><tr><th>日時（日本時間）</th><th>管理者ID</th><th>種類</th><th>画面</th><th>IPアドレス</th><th>ブラウザ</th></tr></thead>
+          <tbody id="adminLogRows"></tbody>
+        </table>
+      </div>
+      <div class="admin-log-pagination">
+        <button type="button" id="adminLogPrevious">← 新しい履歴</button>
+        <span id="adminLogPage">1ページ</span>
+        <button type="button" id="adminLogNext">古い履歴 →</button>
+      </div>
+    </section>
+    <p class="analytics-note">ログは日本時間で表示し、1年間保存します。パスワード、企業コード、固定リンク用トークン、URLの検索文字列は記録しません。CSVには検索条件に一致する最大20,000件を出力します。</p>
+  </main>
+<script src="js/admin-access-logs.js"></script>
+</body>
+</html>

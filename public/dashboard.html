@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会員ホーム | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="lg-shell">
+
+  <!-- サイドバー -->
+  <aside class="lg-side" id="sideNav">
+    <div class="lg-side__logo">
+      <img class="is-company-logo" id="dashboardCompanyLogo" src="images/rally-logo.png" data-site-logo alt="rally 資産形成">
+    </div>
+
+    <nav class="lg-nav">
+      <div class="lg-nav__group-label" data-menu-group="0">まずはここ</div>
+      <a class="lg-nav__link is-active" data-menu-item="home" href="dashboard.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11.5 12 4l9 7.5"/><path d="M5 10v10h14V10"/></svg>
+        ホーム
+      </a>
+      <a class="lg-nav__link" data-menu-item="seminar" href="seminar.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11.5v-3A2.5 2.5 0 0 1 6.5 6H9l6-3v14l-6-3H6.5A2.5 2.5 0 0 1 4 11.5Z"/><path d="M9 14v4.5a1.5 1.5 0 0 1-3 0V14"/><path d="M18 7.5a5 5 0 0 1 0 5"/></svg>
+        セミナー
+      </a>
+
+      <div class="lg-nav__group-label" data-menu-group="1">誰かに聞きたい</div>
+      <a class="lg-nav__link" data-menu-item="fp" href="embed-fp.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        お金のことを相談
+      </a>
+      <a class="lg-nav__link" data-menu-item="investment" href="embed-toshi.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="5"/><rect x="12" y="8" width="3" height="9"/><rect x="17" y="5" width="3" height="12"/></svg>
+        投資のことを相談
+      </a>
+      <a class="lg-nav__link" data-menu-item="expert" href="expert.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18"/><path d="M5 8l-3 6a4 4 0 0 0 8 0z"/><path d="M19 8l-3 6a4 4 0 0 0 8 0z"/><path d="M5 8h14"/></svg>
+        専門家に相談
+      </a>
+
+      <div class="lg-nav__group-label" data-menu-group="2">自分で試したい</div>
+      <a class="lg-nav__link" data-menu-item="video" href="#video-section">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="15" height="12" rx="2"/><path d="M21 8v6l-3-3z"/></svg>
+        動画をみる
+      </a>
+      <a class="lg-nav__link" data-menu-item="article" href="embed-manehapi.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        3分記事をよむ
+      </a>
+      <a class="lg-nav__link" data-menu-item="lifeplan" href="embed-lifeplan.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        未来をのぞく
+      </a>
+
+      <div class="lg-nav__group-label" data-menu-group="3">もっと便利に</div>
+      <a class="lg-nav__link" data-menu-item="roboadvisor" href="https://ai.folio-sec.com/alliance-adv?alliance_partner=efukuri" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg>
+        AIロボアドバイザー<span class="lg-ext">↗</span>
+      </a>
+      <a class="lg-nav__link" data-menu-item="medical" href="embed-iryo.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v4M15 2v4"/><rect x="4" y="6" width="16" height="15" rx="2"/><path d="M12 11v6M9 14h6"/></svg>
+        オンライン診療
+      </a>
+      <a class="lg-nav__link" data-menu-item="learning" href="https://aircourse.com/scsk.html" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4-8 4-8-4z"/><path d="M4 11v5c4 3 12 3 16 0v-5"/></svg>
+        資格支援<span class="lg-ext">↗</span>
+      </a>
+    </nav>
+
+    <div class="lg-side__footer">
+      <div class="lg-side__company">
+        <div class="lg-side__company-mark">SC</div>
+        <div>
+          <div class="lg-side__company-name">SCSK株式会社</div>
+          <div class="lg-side__company-code">EFK-2026-0417</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- メイン -->
+  <main class="lg-main">
+
+    <div class="lg-topbar lg-topbar--dashboard">
+      <div style="display:flex; align-items:center;">
+        <button class="lg-menu-toggle" id="menuToggle" aria-label="メニューを開く">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+        <div>
+          <p class="lg-eyebrow" id="todayLabel">TODAY</p>
+          <h1 class="lg-topbar__greeting">こんにちは、<span class="lg-name">SCSK</span>のみなさん 👋</h1>
+        </div>
+      </div>
+      <div class="lg-topbar__right lg-company-links" id="companyLinksArea" hidden>
+        <a class="lg-company-link lg-pension-link" id="companyPensionLink" href="#" target="_blank" rel="noopener noreferrer" data-analytics-event="@link:pension" hidden>
+          <span class="lg-company-link__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21V10"/><path d="M12 14c-4.5 0-7-2.2-7-6 4.5 0 7 2.2 7 6Z"/><path d="M12 10c0-4.2 2.4-6.5 6.5-6.5 0 4.2-2.4 6.5-6.5 6.5Z"/><path d="M7 21h10"/></svg>
+          </span>
+          <span class="lg-company-link__copy">
+            <span class="lg-company-link__kicker"><i aria-hidden="true"></i>企業専用・確定拠出年金</span>
+            <strong id="companyPensionLinkName">加入者ページ</strong>
+          </span>
+          <span class="lg-company-link__note">運用状況・各種お手続き</span>
+          <span class="lg-company-link__button">加入者ページを開く <b aria-hidden="true">↗</b></span>
+        </a>
+        <a class="lg-company-link lg-stock-plan-link" id="companyStockPlanLink" href="#" target="_blank" rel="noopener noreferrer" data-analytics-event="@link:stock-plan" hidden>
+          <span class="lg-company-link__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19h16"/><path d="M6.5 16V9.5"/><path d="M11 16V5"/><path d="M15.5 16v-4"/><path d="M20 7.5 16.5 4 13 7.5"/></svg>
+          </span>
+          <span class="lg-company-link__copy">
+            <span class="lg-company-link__kicker"><i aria-hidden="true"></i>企業専用・持株会</span>
+            <strong id="companyStockPlanLinkName">持株会サイト</strong>
+          </span>
+          <span class="lg-company-link__note">株式購入・各種お手続き</span>
+          <span class="lg-company-link__button">加入者ページを開く <b aria-hidden="true">↗</b></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 毎日の小さな一歩を後押しするヒーロー -->
+    <section class="lg-hero">
+      <img class="lg-hero__image" id="dashboardHeroImage" src="images/asset-growth-hero-v4-female.webp" alt="" aria-hidden="true">
+      <div class="lg-hero__content">
+        <h2 class="lg-hero__title"><span id="dashboardHeroTitle1">お金のこと、</span><br><em id="dashboardHeroTitle2">ちょっとずつで大丈夫。</em></h2>
+        <p class="lg-hero__lead" id="dashboardHeroLead">気になることを読んだり、未来をのぞいたり。今日はできそうなことを、まずはひとつだけ</p>
+        <div class="lg-hero__actions">
+          <a class="lg-hero__primary" id="dashboardHeroPrimary" href="#start"><span id="dashboardHeroPrimaryLabel">今日できることを見る</span> <span aria-hidden="true">↓</span></a>
+          <div class="lg-hero__consult">
+            <a class="lg-hero__secondary" id="dashboardHeroSecondary" href="embed-fp.html"><span id="dashboardHeroSecondaryLabel">お金の専門家に聞いてみる</span></a>
+            <div class="lg-hero__trust"><span id="dashboardHeroTrust1">相談は無料</span><span id="dashboardHeroTrust2">秘密厳守</span><span id="dashboardHeroTrust3">勧誘はありません</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lg-notice-list" id="dashboardNotices" aria-label="お知らせ"></div>
+    <!-- 今日の気分から選ぶ -->
+    <section class="lg-now" id="start">
+      <div class="lg-now__head">
+        <div>
+          <span class="lg-now__hello" id="dashboardTopicsEyebrow">さて、今日は</span>
+          <h2 id="dashboardTopicsTitle">どこから始める？</h2>
+        </div>
+        <p class="lg-section-editable-copy" id="dashboardTopicsLead">1分だけでも、相談だけでも。<br>気分に合うものを選んでください。</p>
+      </div>
+      <div class="lg-now__grid" id="dashboardTopics" aria-live="polite"></div>
+    </section>
+
+    <!-- 相談サービス -->
+    <section class="lg-section">
+      <div class="lg-section__head">
+        <div>
+          <h3 class="lg-section__title">
+            <span class="lg-section__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12a8 8 0 1 1-3.2-6.4"/><path d="M12 8v4l3 2"/></svg></span>
+            <span id="dashboardConsultationsTitle">モヤモヤは、話すと少し軽くなる</span>
+          </h3>
+          <p class="lg-section__lead lg-section-editable-copy" id="dashboardConsultationsLead">相談したいことが決まっていなくても大丈夫。近そうなテーマを選んでください。</p>
+        </div>
+      </div>
+      <div class="lg-quick-grid" id="dashboardConsultations" aria-live="polite"></div>
+      <p class="lg-consultation-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></svg>
+        <span id="dashboardConsultationsNote">各相談サービスはrally 資産形成協業企業様の専用サイトへリンクしております</span>
+      </p>
+    </section>
+
+    <!-- 無料セミナー / 動画 -->
+    <section class="lg-section" id="video-section">
+      <div class="lg-section__head">
+        <h3 class="lg-section__title">
+          <span class="lg-section__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="15" height="12" rx="2"/><path d="M21 8v6l-3-3z"/></svg></span>
+          <span id="dashboardVideosTitle">すきま時間に、動画で学ぶ</span> <span class="lg-eyebrow" id="dashboardVideosBadge">NEW</span>
+        </h3>
+        <a class="lg-section__more" id="dashboardVideosLink" href="seminar.html"><span id="dashboardVideosLinkLabel">セミナー情報を見る</span> →</a>
+      </div>
+
+      <div class="lg-scroll-row" id="dashboardVideos" aria-live="polite"></div>
+    </section>
+
+    <!-- 福利厚生サービス（相談系とは別枠、一番下） -->
+    <section class="lg-section lg-benefits-section" id="dashboardServicesSection" hidden>
+      <div class="lg-section__head">
+        <h3 class="lg-section__title">
+          <span class="lg-section__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/></svg></span>
+          <span id="dashboardServicesTitle">仕事と暮らしに役立つサービス</span> <span class="lg-eyebrow" id="dashboardServicesBadge">BENEFITS</span>
+        </h3>
+        <p class="lg-benefits-section__lead lg-section-editable-copy" id="dashboardServicesLead">毎日を少しラクに、これからを少し豊かに。</p>
+      </div>
+      <div class="lg-benefit-grid" id="dashboardServices" aria-live="polite"></div>
+      <p class="lg-benefits-section__note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></svg>
+        <span id="dashboardServicesNote">各サービスはrally 資産形成協業企業様の専用サイトへリンクしております</span>
+      </p>
+    </section>
+
+    <footer class="lg-site-footer">
+      <nav class="lg-site-footer__links" aria-label="規約・ポリシー">
+        <a href="privacy-policy.html">個人情報の取り扱いについて</a>
+        <a href="site-terms.html">サイトご利用条件</a>
+        <a href="member-terms.html">会員利用規約</a>
+      </nav>
+      <p>Copyright© SCSK Corporation ALL rights reserved.</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- 動画モーダル -->
+<div class="lg-modal-backdrop" id="videoModal">
+  <div class="lg-modal">
+    <div class="lg-modal__head">
+      <span id="videoModalTitle">セミナー動画</span>
+      <div class="lg-modal__actions">
+        <a class="lg-modal__youtube" id="videoModalYoutube" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTubeで見る ↗</a>
+        <button class="lg-modal__close" id="videoModalClose" aria-label="閉じる">×</button>
+      </div>
+    </div>
+    <div class="lg-modal__frame-wrap">
+      <iframe id="videoModalFrame" src="" title="セミナー動画" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script src="js/content-store.js"></script>
+<script src="js/company-logo.js"></script>
+<script src="js/member-branding.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

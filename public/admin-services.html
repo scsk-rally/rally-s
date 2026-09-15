@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="仕事と暮らしに役立つサービスを管理します。">
+<title>サービス管理 | rally 資産形成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/admin-guard.js"></script>
+</head>
+<body class="admin-body" data-content-type="service">
+  <header class="admin-header">
+    <a href="admin.html" class="admin-header__logo" aria-label="管理トップへ"><img src="images/rally-logo.png" data-site-logo alt="rally 資産形成"></a>
+    <div class="admin-header__actions">
+      <a class="admin-header__back" href="admin.html"><span aria-hidden="true">←</span> 管理トップへ</a>
+      <a class="admin-header__settings" href="admin-settings.html" aria-label="管理者設定"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.86 2.86-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 8.5 19.4a1.7 1.7 0 0 0-1.88.34l-.06.06-2.86-2.86.06-.06A1.7 1.7 0 0 0 4.1 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2.3V9.6h.09A1.7 1.7 0 0 0 4.1 8.5a1.7 1.7 0 0 0-.34-1.88l-.06-.06L6.56 3.7l.06.06A1.7 1.7 0 0 0 8.5 4.1a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2.3h4v.09A1.7 1.7 0 0 0 15 4.1a1.7 1.7 0 0 0 1.88-.34l.06-.06 2.86 2.86-.06.06A1.7 1.7 0 0 0 19.4 8.5a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.09v4h-.09A1.7 1.7 0 0 0 19.4 15Z"/></svg><span>設定</span></a>
+      <button class="admin-header__logout" id="adminLogout" type="button">ログアウト</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div class="admin-title">
+      <div><span>SERVICE MANAGEMENT</span><h1>サービス管理</h1><p>「仕事と暮らしに役立つサービス」のカードとリンク先を管理します。</p></div>
+      <div class="admin-title__note"><span><strong>最大6件・上下2段</strong>番号の小さいサービスから順番に配置されます。</span></div>
+    </div>
+    <section class="admin-panel admin-section-settings">
+      <div class="admin-panel__head"><span class="admin-panel__icon">Aa</span><div><small>SECTION HEADING</small><h2>トップページの見出し設定</h2></div></div>
+      <form id="sectionSettingsForm" data-section-id="services" novalidate>
+        <div class="admin-section-settings__grid">
+          <label class="admin-field" for="sectionTitle"><span>見出しタイトル</span><input id="sectionTitle" name="title" type="text" required></label>
+          <label class="admin-field" for="sectionBadgeText"><span>タイトル横のバッジ</span><input id="sectionBadgeText" name="badgeText" type="text" maxlength="24" placeholder="例）BENEFITS"></label>
+          <label class="admin-visibility"><input name="badgeVisible" type="checkbox" checked><span><b>バッジを表示する</b><small>オフにするとタイトル横のバッジを隠します</small></span></label>
+          <span></span>
+          <label class="admin-field admin-field--wide" for="sectionLead"><span>右側の補足文 <small>改行可能</small></span><textarea id="sectionLead" name="lead" placeholder="トップページに表示する案内文"></textarea></label>
+          <label class="admin-field admin-field--wide" for="sectionNote"><span>カード下の注記</span><input id="sectionNote" name="note" type="text" placeholder="外部サイトへのリンクについての注記"></label>
+        </div>
+        <div class="admin-section-settings__actions"><button class="admin-submit" type="submit">見出し設定を保存 →</button><p class="admin-section-settings__status" id="sectionSettingsStatus" role="status" hidden></p></div>
+      </form>
+    </section>
+    <div class="admin-layout">
+      <section class="admin-panel admin-panel--form">
+        <div class="admin-panel__head"><span class="admin-panel__icon">＋</span><div><small>ADD / EDIT</small><h2>サービスを登録</h2></div></div>
+        <form id="contentForm" novalidate>
+          <label class="admin-field" for="serviceTitle"><span>サービス名</span><input id="serviceTitle" name="title" type="text" required></label>
+          <label class="admin-field" for="serviceCategory"><span>カテゴリ</span><input id="serviceCategory" name="category" type="text" placeholder="例）ヘルスケア"></label>
+          <label class="admin-field" for="serviceHint"><span>短い案内文</span><input id="serviceHint" name="hint" type="text" placeholder="例）すきま時間に受診"></label>
+          <label class="admin-field" for="serviceDescription"><span>サービス説明</span><textarea id="serviceDescription" name="description" placeholder="カード内に表示する説明文"></textarea></label>
+          <label class="admin-field" for="serviceButtonLabel"><span>リンクボタン名</span><input id="serviceButtonLabel" name="buttonLabel" type="text" placeholder="例）サービスを見る"></label>
+          <label class="admin-field" for="serviceTargetUrl"><span>対象URL <small>外部URL／内部HTML</small></span><input id="serviceTargetUrl" name="targetUrl" type="text" required placeholder="https://example.com/ または page.html"></label>
+          <fieldset class="admin-link-mode">
+            <legend>ページの開き方</legend>
+            <label><input name="linkMode" type="radio" value="iframe" checked><span><b>iframe表示</b><small>会員サイト内の組み込みページに表示します</small></span></label>
+            <label><input name="linkMode" type="radio" value="direct"><span><b>直接リンク</b><small>登録したURLを直接開きます</small></span></label>
+          </fieldset>
+          <p class="admin-field__hint">iframe表示は、外部サイト側の設定により埋め込みできない場合があります。直接リンクの外部URLは別タブで開きます。</p>
+          <label class="admin-field" for="serviceOrder"><span>表示順 <small>番号が小さい順</small></span><input id="serviceOrder" name="order" type="number" min="1" max="99" value="1" required></label>
+          <div class="admin-schedule-fields">
+            <label class="admin-field" for="serviceStartAt"><span>公開開始日時 <small>任意</small></span><input id="serviceStartAt" name="startAt" type="datetime-local"></label>
+            <label class="admin-field" for="serviceEndAt"><span>公開終了日時 <small>任意・空欄は無期限</small></span><input id="serviceEndAt" name="endAt" type="datetime-local"></label>
+          </div>
+          <label class="admin-visibility"><input name="visible" type="checkbox" checked><span><b>サイトに表示する</b><small>オフにすると公開期間内でも非表示になります</small></span></label>
+          <div class="admin-form-actions">
+            <button class="admin-submit" type="submit"><span id="contentSubmitLabel">サービスを追加</span> →</button>
+            <button class="admin-cancel" id="contentCancel" type="button" hidden>キャンセル</button>
+          </div>
+        </form>
+      </section>
+      <section class="admin-panel admin-panel--list">
+        <div class="admin-list-head"><div><small>REGISTERED SERVICES</small><h2>登録済みサービス <span id="contentCount">0 / 6件</span></h2></div></div>
+        <div class="admin-company-list" id="contentList" aria-live="polite"></div>
+      </section>
+    </div>
+    <div class="admin-message" id="adminMessage" role="status" hidden></div>
+  </main>
+
+<script src="js/content-store.js"></script>
+<script src="js/admin-section-settings.js"></script>
+<script src="js/admin-content.js"></script>
+</body>
+</html>
