@@ -4,7 +4,7 @@
 
 - GitHub Organization：scsk-rally（会社名SCSK株式会社で作成済み）。管理ユーザー：scsk-rallys。
 - 非公開リポジトリ：https://github.com/scsk-rally/rally-s（作成済み、privateを設定画面で確認）。
-- 新Vercelチーム：未作成。
+- 新Vercelチーム：作成済みのVercel Hobbyチーム（表示名 K）。
 - 新Vercelプロジェクト：rally-s（未作成）。
 - 本番URL：rally-s.vercel.app（希望・未取得）。
 - Production branch：main（接続時に設定）。
@@ -48,9 +48,9 @@ GitHub Freeの非公開リポジトリでは必須レビュー・保護ブラン
 
 ## 費用・本人操作
 
-GitHub OrganizationはFreeで開始。VercelはProの14日間無料体験を候補とし、開始時期は未確定。
+GitHub OrganizationはFreeで開始。Vercelのプロジェクト作成画面でProの14日間無料トライアルを選んだところ、カード情報と請求先住所の入力が必須と表示された（2026-09-15）。カード未登録の方針に従い、入力もトライアル開始も行わず取消済み。
 カード登録、有料契約、本人認証、パスワード設定、規約同意は本人が操作する。
-無料期間終了後の会社運用にHobbyを使えるとは扱わない。
+無料期間終了後の会社運用にHobbyを使えるとは扱わない。現時点で非公開OrganizationリポジトリをVercelでデプロイするには、カード登録を伴うProへの移行が必要。
 
 確認元（2026-09-15）：
 - https://vercel.com/docs/git
