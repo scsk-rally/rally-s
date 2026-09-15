@@ -4,7 +4,7 @@
 
 - GitHub Organization：scsk-rally（会社名SCSK株式会社で作成済み）。管理ユーザー：scsk-rallys。
 - リポジトリ：https://github.com/scsk-rally/rally-s（2026-09-15に一時的にpublicへ変更）。
-- 新Vercelチーム：K（Hobby）。
+- 新Vercelチーム：SCSK rally（Hobby、URL namespace: `k-645a`）。
 - 新Vercelプロジェクト：rally-s（作成済み、GitHub連携済み）。
 - 本番URL：https://rally-s.vercel.app（初回デプロイ成功）。
 - Production branch：main（接続時に設定）。
