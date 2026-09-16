@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import { createHash } from 'node:crypto'
 import { z } from 'zod'
+import { after } from 'next/server'
 import { clearLoginAttempts, consumeLoginAttempt, getAdminById, writeAudit } from '@/lib/db'
 import { ADMIN_SESSION_MAX_AGE, createSessionToken, requestAccessMetadata, requireSameOrigin, setSessionCookie } from '@/lib/security'
 import { isAdminRequestAllowed } from '@/lib/admin-ip-access'
@@ -32,7 +33,6 @@ export async function POST(request: Request) {
       await logAdminAccess(input.id, 'admin.login.failure', metadata)
       return Response.json({ ok: false }, { status: 401 })
     }
-    await clearLoginAttempts(attemptKey)
     if (!isAdminRequestAllowed(admin, request.headers)) {
       await logAdminAccess(admin.id, 'admin.login.ip-denied', metadata)
       return Response.json({ ok: false, ipRestricted: true }, { status: 403 })
@@ -42,7 +42,12 @@ export async function POST(request: Request) {
       isOwner: admin.isOwner, permissions: admin.permissions,
     }, ADMIN_SESSION_MAX_AGE)
     await setSessionCookie('admin', token, ADMIN_SESSION_MAX_AGE)
-    await logAdminAccess(admin.id, 'admin.login.success', metadata)
+    after(async () => {
+      await Promise.allSettled([
+        clearLoginAttempts(attemptKey),
+        logAdminAccess(admin.id, 'admin.login.success', metadata),
+      ])
+    })
     const effectivePermissions = !admin.isOwner && admin.analyticsCompanyIds.length === 0
       ? admin.permissions.filter((permission) => permission !== 'analytics')
       : admin.permissions

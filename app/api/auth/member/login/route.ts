@@ -1,5 +1,6 @@
 import { z } from 'zod'
 import { createHash } from 'node:crypto'
+import { after } from 'next/server'
 import { clearLoginAttempts, consumeLoginAttempt, findCompanyByCode, writeAudit } from '@/lib/db'
 import { createAnalyticsSessionId, createSessionToken, MEMBER_SESSION_MAX_AGE, requireSameOrigin, setAnalyticsSessionCookie, setSessionCookie } from '@/lib/security'
 
@@ -25,11 +26,18 @@ export async function POST(request: Request) {
     if (!await consumeLoginAttempt(attemptKey)) return Response.json({ ok: false, retryLater: true }, { status: 429 })
     const company = await findCompanyByCode(code)
     if (!company) return Response.json({ ok: false }, { status: 401 })
-    await clearLoginAttempts(attemptKey)
     const token = await createSessionToken({ role: 'member', subjectId: company.id, version: company.sessionVersion }, MEMBER_SESSION_MAX_AGE)
     await setSessionCookie('member', token, MEMBER_SESSION_MAX_AGE)
     await setAnalyticsSessionCookie(createAnalyticsSessionId())
-    await writeAudit('member', company.id, 'member.login', 'session', null, {})
+    after(async () => {
+      const results = await Promise.allSettled([
+        clearLoginAttempts(attemptKey),
+        writeAudit('member', company.id, 'member.login', 'session', null, {}),
+      ])
+      results.forEach((result) => {
+        if (result.status === 'rejected') console.error('[member.login] post-response task failed', { error: String(result.reason) })
+      })
+    })
     return Response.json({ ok: true, company: publicCompany(company) })
   } catch {
     return Response.json({ ok: false }, { status: 400 })

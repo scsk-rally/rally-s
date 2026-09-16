@@ -475,17 +475,26 @@ export async function getAdminById(id: string): Promise<AdminRecord | null> {
     const admin = memory.admins.find((item) => item.id === id)
     return admin ? structuredClone(admin) : null
   }
-  const rows = await sql`SELECT id, password_hash, credential_version, is_owner, permissions, allowed_ip_ranges FROM efukuri_admin_users WHERE id = ${id}`
+  const rows = await sql`SELECT admins.id, admins.password_hash, admins.credential_version, admins.is_owner,
+      admins.permissions, admins.allowed_ip_ranges,
+      COALESCE(
+        array_agg(scopes.company_id::text ORDER BY scopes.created_at, scopes.company_id)
+          FILTER (WHERE scopes.company_id IS NOT NULL),
+        ARRAY[]::text[]
+      ) AS analytics_company_ids
+    FROM efukuri_admin_users AS admins
+    LEFT JOIN efukuri_admin_company_scopes AS scopes
+      ON scopes.admin_id = admins.id AND scopes.permission = 'analytics'
+    WHERE admins.id = ${id}
+    GROUP BY admins.id`
   if (!rows[0]) return null
-  const scopeRows = await sql`SELECT company_id FROM efukuri_admin_company_scopes
-    WHERE admin_id = ${id} AND permission = 'analytics' ORDER BY created_at, company_id`
   return {
     id: String(rows[0].id),
     passwordHash: String(rows[0].password_hash),
     credentialVersion: String(rows[0].credential_version),
     isOwner: Boolean(rows[0].is_owner),
     permissions: normalizePermissions(rows[0].permissions),
-    analyticsCompanyIds: scopeRows.map((row) => String(row.company_id)),
+    analyticsCompanyIds: Array.isArray(rows[0].analytics_company_ids) ? rows[0].analytics_company_ids.map(String) : [],
     allowedIpRanges: normalizeAdminIpRanges(Array.isArray(rows[0].allowed_ip_ranges) ? rows[0].allowed_ip_ranges.map(String) : []),
   }
 }
@@ -653,8 +662,19 @@ export async function listCompanies(): Promise<CompanyRecord[]> {
 
 export async function findCompanyByCode(code: string) {
   const digest = companyCodeDigest(code)
-  const companies = await listCompanies()
-  return companies.find((item) => item.codeDigest === digest) || null
+  await ensureSchema()
+  const sql = getSql()
+  if (!sql) return structuredClone(memory.companies.find((item) => item.codeDigest === digest && item.active) || null)
+  const rows = await sql`SELECT id, code_digest, code_hint, name, pension_name, pension_url, stock_plan_name, stock_plan_url, fp_consultation_url, logo_url, active, session_version, link_version
+    FROM efukuri_companies WHERE code_digest = ${digest} AND active = true LIMIT 1`
+  const row = rows[0]
+  if (!row) return null
+  return {
+    id: String(row.id), codeDigest: String(row.code_digest), codeHint: String(row.code_hint), name: String(row.name),
+    pensionName: String(row.pension_name), pensionUrl: String(row.pension_url), stockPlanName: String(row.stock_plan_name),
+    stockPlanUrl: String(row.stock_plan_url), fpConsultationUrl: String(row.fp_consultation_url || ''), logoUrl: String(row.logo_url || ''), active: Boolean(row.active),
+    sessionVersion: String(row.session_version), linkVersion: String(row.link_version),
+  }
 }
 
 export async function getCompanyById(id: string) {

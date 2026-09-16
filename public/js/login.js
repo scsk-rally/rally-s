@@ -21,8 +21,17 @@
 
   if (new URLSearchParams(window.location.search).get('linkError') === '1') errorBox.hidden = false;
 
+  input.addEventListener('keydown', function (event) {
+    if (event.key !== 'Enter' || event.isComposing) return;
+    event.preventDefault();
+    form.requestSubmit();
+  });
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
+    var submitButton = form.querySelector('[type="submit"]');
+    if (submitButton && submitButton.disabled) return;
+    if (submitButton) submitButton.disabled = true;
     fetch('/api/auth/member/login', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code: input.value })
@@ -35,6 +44,7 @@
       errorBox.hidden = false;
       input.setAttribute('aria-invalid', 'true');
       input.focus();
+      if (submitButton) submitButton.disabled = false;
     });
   });
 

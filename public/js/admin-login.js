@@ -21,11 +21,20 @@
     showError('現在のネットワークからは、この管理者アカウントを利用できません。');
   }
 
+  [idInput, passwordInput].forEach(function (input) {
+    input.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' || event.isComposing) return;
+      event.preventDefault();
+      form.requestSubmit();
+    });
+  });
+
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     var id = idInput.value.trim();
     var password = passwordInput.value;
     var submitButton = form.querySelector('[type="submit"]');
+    if (submitButton && submitButton.disabled) return;
     if (submitButton) submitButton.disabled = true;
 
     auth.verify(id, password).then(function (result) {
