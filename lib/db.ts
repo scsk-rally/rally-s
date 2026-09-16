@@ -99,6 +99,7 @@ const memory = {
 
 let sqlClient: NeonQueryFunction<false, false> | null = null
 let schemaPromise: Promise<void> | null = null
+const schemaVersion = '2026-09-16-1'
 
 function getSql() {
   const url = databaseUrl()
@@ -158,6 +159,19 @@ export async function ensureSchema() {
   }
   if (!schemaPromise) {
     schemaPromise = (async () => {
+      // A serverless instance starts with an empty module cache.  Avoid replaying
+      // the full DDL migration on every cold start once this database is ready.
+      const migrationTable = await sql`SELECT to_regclass('public.efukuri_schema_migrations') AS name`
+      if (migrationTable[0]?.name) {
+        const applied = await sql`SELECT 1 FROM efukuri_schema_migrations WHERE version = ${schemaVersion}`
+        if (applied.length) return
+      } else {
+        await sql`CREATE TABLE IF NOT EXISTS efukuri_schema_migrations (
+          version text PRIMARY KEY,
+          applied_at timestamptz NOT NULL DEFAULT now()
+        )`
+      }
+
       await sql`CREATE TABLE IF NOT EXISTS efukuri_content_collections (
         type text PRIMARY KEY,
         items jsonb NOT NULL,
@@ -286,6 +300,7 @@ export async function ensureSchema() {
         await sql`INSERT INTO efukuri_admin_users (id, password_hash, credential_version, is_owner, permissions)
           VALUES (${admin.id}, ${hash}, ${version}, true, ${JSON.stringify(adminPermissions)}::jsonb) ON CONFLICT (id) DO NOTHING`
       }
+      await sql`INSERT INTO efukuri_schema_migrations (version) VALUES (${schemaVersion}) ON CONFLICT (version) DO NOTHING`
     })()
   }
   return schemaPromise
