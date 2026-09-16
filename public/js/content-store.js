@@ -93,7 +93,31 @@
 
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
   function validType(type) { return Object.prototype.hasOwnProperty.call(LIMITS, type); }
-  function storageKey(type) { return PREFIX + type; }
+  function isAdminPage() { return /^\/admin(?:-[a-z]+)?\.html$/i.test(window.location.pathname) && !/admin-login\.html$/i.test(window.location.pathname); }
+  function storageKey() { return PREFIX + 'member-content-snapshot'; }
+  function restoreMemberSnapshot() {
+    if (isAdminPage()) return false;
+    try {
+      var snapshot = JSON.parse(window.sessionStorage.getItem(storageKey()) || 'null');
+      if (!snapshot || !snapshot.content || typeof snapshot.content !== 'object') return false;
+      var restored = false;
+      Object.keys(DEFAULTS).forEach(function (type) {
+        if (Array.isArray(snapshot.content[type])) {
+          cache[type] = clone(snapshot.content[type]);
+          restored = true;
+        }
+      });
+      return restored;
+    } catch (error) {
+      return false;
+    }
+  }
+  function saveMemberSnapshot() {
+    if (isAdminPage()) return;
+    try {
+      window.sessionStorage.setItem(storageKey(), JSON.stringify({ content:cache, savedAt:Date.now() }));
+    } catch (error) {}
+  }
   function getAll(type) {
     if (!validType(type)) return [];
     return clone(cache[type] || DEFAULTS[type]).slice(0, LIMITS[type]);
@@ -140,7 +164,7 @@
   }
 
   function loadFromServer() {
-    var isAdmin = /^\/admin(?:-[a-z]+)?\.html$/i.test(window.location.pathname) && !/admin-login\.html$/i.test(window.location.pathname);
+    var isAdmin = isAdminPage();
     return fetch('/api/content' + (isAdmin ? '?mode=all' : ''), { credentials: 'same-origin', cache: 'no-store' })
       .then(function (response) {
         if (!response.ok) throw new Error('content-load-failed');
@@ -150,11 +174,17 @@
         Object.keys(DEFAULTS).forEach(function (type) {
           if (body.content && Array.isArray(body.content[type])) cache[type] = clone(body.content[type]);
         });
+        saveMemberSnapshot();
         return cache;
       });
   }
 
-  var ready = loadFromServer().catch(function (error) {
+  var hasMemberSnapshot = restoreMemberSnapshot();
+  var refresh = loadFromServer().catch(function (error) {
+    if (hasMemberSnapshot) {
+      console.warn('content-refresh-failed', error);
+      return cache;
+    }
     console.error(error);
     var warning = document.createElement('div');
     warning.setAttribute('role', 'alert');
@@ -163,6 +193,7 @@
     document.addEventListener('DOMContentLoaded', function () { document.body.appendChild(warning); }, { once:true });
     return cache;
   });
+  var ready = hasMemberSnapshot ? Promise.resolve(cache) : refresh;
   function makeId(type) {
     return type + '-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 7);
   }
@@ -202,6 +233,7 @@
     isPublished: isPublished,
     getPublished: getPublished,
     extractYouTubeId: extractYouTubeId,
-    isAllowedTargetUrl: isAllowedTargetUrl
+    isAllowedTargetUrl: isAllowedTargetUrl,
+    refresh: refresh
   };
 }(window));
